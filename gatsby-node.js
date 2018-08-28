@@ -40,13 +40,13 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `).then(result => {
-      result.data.allContentfulSections.edges.map(({node}) => {
+      result.data.allContentfulSections.edges.map(({ node }) => {
         createPage({
-          path: `${node.slug}/`,
+          path: `${node.slug}`,
           component: path.resolve(`./src/templates/sections.js`),
           context: {
-            slug: node.slug
-          }
+            slug: node.slug,
+          },
         })
       })
       resolve()
@@ -104,6 +104,6 @@ exports.createPages = ({ graphql, actions }) => {
   // })
 
   // return Promise.all([loadPosts, loadPages, loadTags])
-  
+
   return Promise.all([loadSections])
 }
