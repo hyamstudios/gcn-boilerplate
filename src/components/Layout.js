@@ -1,16 +1,19 @@
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
+import { Provider, Box } from 'rebass'
+
 import favicon from '../images/favicon.ico'
 import '../styles/global'
+
 import theme from '../styles/theme'
 import config from '../utils/siteConfig'
+
 import Menu from '../components/Menu'
 import Footer from '../components/Footer'
 
 const Template = ({ children }) => {
   return (
-    <div className="siteRoot">
+    <Box className="siteRoot">
       <Helmet>
         <title>{config.siteTitle}</title>
         <meta charSet="utf-8" />
@@ -24,16 +27,16 @@ const Template = ({ children }) => {
         <meta property="og:site_name" content={config.siteTitle} />
       </Helmet>
 
-      <ThemeProvider theme={theme}>
+      <Provider theme={theme}>
         <>
-          <div className="siteContent">
+          <Box className="siteContent">
             <Menu />
             {children}
-          </div>
+          </Box>
           <Footer />
         </>
-      </ThemeProvider>
-    </div>
+      </Provider>
+    </Box>
   )
 }
 
