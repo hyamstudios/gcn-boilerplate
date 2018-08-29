@@ -1,13 +1,12 @@
 import React from 'react'
-import { graphql, Link as GatsbyLink } from 'gatsby'
+import { graphql } from 'gatsby'
 
-import { Container, Lead, Text, NavLink } from 'rebass'
+import { Container, Lead, Text } from 'rebass'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 
 const SectionsTemplate = ({ data }) => {
   const d = data.contentfulSections
-  const menu = data.allContentfulSections.edges
   return (
     <Layout>
       <SEO
@@ -23,17 +22,6 @@ const SectionsTemplate = ({ data }) => {
             __html: d.description.childMarkdownRemark.html,
           }}
         />
-        <ul>
-          {menu.map(({ node }) => {
-            return (
-              <li key={node.slug}>
-                <NavLink is={GatsbyLink} to={node.slug}>
-                  {node.title}
-                </NavLink>
-              </li>
-            )
-          })}
-        </ul>
       </Container>
     </Layout>
   )
@@ -54,14 +42,6 @@ export const query = graphql`
             depth
           }
           excerpt
-        }
-      }
-    }
-    allContentfulSections(limit: 1000) {
-      edges {
-        node {
-          slug
-          title
         }
       }
     }
