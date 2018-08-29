@@ -12,6 +12,8 @@ import config from '../utils/siteConfig'
 import Menu from '../components/Menu'
 import Footer from '../components/Footer'
 
+import Grid from '../components/Grid'
+
 const Template = props => {
   const { children } = props
   return (

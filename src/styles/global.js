@@ -1,4 +1,6 @@
-// import { injectGlobal } from 'styled-components'
+import { injectGlobal } from 'styled-components'
 
-// injectGlobal`
-// `
+injectGlobal`
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+`
