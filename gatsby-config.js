@@ -18,6 +18,8 @@ try {
 }
 
 module.exports = {
+  // Note: it must *not* have a trailing slash.
+  // pathPrefix: `/example`,
   siteMetadata: {
     siteUrl: config.siteUrl,
     rssMetadata: {
@@ -49,7 +51,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images-contentful`,
             options: {
-              maxWidth: 650,
+              maxWidth: 1024,
               backgroundColor: 'white',
               linkImagesToOriginal: false,
             },

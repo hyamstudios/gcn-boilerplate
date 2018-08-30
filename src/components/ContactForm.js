@@ -2,9 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import 'whatwg-fetch' // Fetch Polyfill
 
-import {Modal, Button, Textarea as Message, Input as Email, Input as Name, Button as Submit } from 'rebass'
+import {
+  Modal,
+  Button,
+  Textarea as Message,
+  Input as Email,
+  Input as Name,
+  Button as Submit,
+} from 'rebass'
 
-const Form = (p) => <form {...p}>{p.children}</form>
+const Form = p => <form {...p}>{p.children}</form>
 
 const encode = data => {
   return Object.keys(data)
@@ -97,15 +104,19 @@ class ContactForm extends React.Component {
           onChange={this.handleInputChange}
           required
         />
-        <Submit name="submit" type="submit">Send</Submit>
+        <Submit name="submit" type="submit">
+          Send
+        </Submit>
 
-        {this.state.showModal && <Modal>
-          <p>
-            Thank you for reaching out. I will get back to you as soon as
-            possible.
-          </p>
-          <Button onClick={this.closeModal}>Okay</Button>
-        </Modal>}
+        {this.state.showModal && (
+          <Modal>
+            <p>
+              Thank you for reaching out. I will get back to you as soon as
+              possible.
+            </p>
+            <Button onClick={this.closeModal}>Okay</Button>
+          </Modal>
+        )}
       </Form>
     )
   }
