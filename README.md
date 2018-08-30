@@ -23,8 +23,6 @@ A starter template to build amazing static websites with Gatsby, Contentful and 
 
 https://gcn.netlify.com/
 
-![](screenshots/demo.jpg)
-
 ## Getting Started
 
 ### Install
