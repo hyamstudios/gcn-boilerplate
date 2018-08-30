@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import { Box, Lead } from 'rebass'
+import { Box, Heading } from 'rebass'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 
@@ -15,7 +15,7 @@ const SectionsTemplate = ({ data }) => {
         pageUrl={d.slug}
       />
       <Box is="article">
-        <Lead>{d.title}</Lead>
+        <Heading>{d.title}</Heading>
         <div
           dangerouslySetInnerHTML={{
             __html: d.body.childMarkdownRemark.html,

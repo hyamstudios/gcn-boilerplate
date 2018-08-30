@@ -1,4 +1,13 @@
 module.exports = {
+  fonts: {
+    sans: 'system-ui, sans-serif',
+    mono: 'Menlo, monospace',
+  },
+  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72, 96],
+  fontWeights: {
+    normal: 400,
+    bold: 700,
+  },
   colors: {
     /* Required: For PWA/Offline Settings */
     backgroundColor: '#FFFFFF',
@@ -20,4 +29,5 @@ module.exports = {
     ],
     /* The Rest */
   },
+  radii: [0, 2, 4],
 }
