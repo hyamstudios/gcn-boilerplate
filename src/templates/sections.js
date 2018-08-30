@@ -48,9 +48,4 @@ export const query = graphql`
   }
 `
 
-// export const query = graphql`
-//   query {
-//   }
-// `
-
 export default SectionsTemplate
