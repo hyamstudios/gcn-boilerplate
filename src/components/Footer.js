@@ -30,7 +30,7 @@ export const Footer = props => (
 			</Text>
 		</Box>
 		<Box mb={[3, 3, 0]} width={[1, 1 / 3, 2 / 10]}>
-			<FooterLink to="/about-us">Home</FooterLink>
+			<FooterLink to="/">Home</FooterLink>
 			{props.links.map(link => (
 				<FooterLink key={link.slug} to={link.slug}>
 					{link.title}
