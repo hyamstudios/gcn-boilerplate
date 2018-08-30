@@ -1,46 +1,39 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import { Container, Lead, Text } from 'rebass'
+import { Box, Lead } from 'rebass'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 
 const SectionsTemplate = ({ data }) => {
-  const d = data.contentfulSections
+  const d = data.contentfulPage
   return (
     <Layout>
       <SEO
         title={d.title}
-        description={d.description.childMarkdownRemark.excerpt}
+        description={d.body.childMarkdownRemark.excerpt}
         pageUrl={d.slug}
       />
-      <Container>
+      <Box is="article">
         <Lead>{d.title}</Lead>
-        <Text>{d.description.childMarkdownRemark.timeToRead} min read</Text>
         <div
           dangerouslySetInnerHTML={{
-            __html: d.description.childMarkdownRemark.html,
+            __html: d.body.childMarkdownRemark.html,
           }}
         />
-      </Container>
+      </Box>
     </Layout>
   )
 }
 
 export const query = graphql`
   query($slug: String!) {
-    contentfulSections(slug: { eq: $slug }) {
-      isMenu
+    contentfulPage(slug: { eq: $slug }) {
       title
       slug
-      description {
+      body {
         childMarkdownRemark {
           html
-          timeToRead
-          headings {
-            value
-            depth
-          }
           excerpt
         }
       }

@@ -2,6 +2,28 @@ import sys from 'system-components'
 import { style, util } from 'styled-system'
 import { Box } from 'rebass'
 
+/*
+
+TODO: add polyfill
+
+Example:
+
+<Grid
+  m={[1, 2, 3, 3, 3]}
+  gap={[1, 2, 3, 3, 3]}
+  columns={[
+    '100fr',
+    '50fr 50fr',
+    '33fr 33fr 33fr',
+    '25fr 25fr 25fr 25fr',
+  ]}
+  alignItems="center"
+>
+  {"Your Elements"}
+</Grid>
+
+ */
+
 const px = util.px
 const num = util.num
 export const Grid = sys(

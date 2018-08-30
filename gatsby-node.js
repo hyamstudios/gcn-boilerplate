@@ -1,12 +1,10 @@
 const path = require(`path`)
-
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-
-  const loadSections = new Promise((resolve, reject) => {
+  const loadPages = new Promise((resolve, reject) => {
     graphql(`
       {
-        allContentfulSections {
+        allContentfulPage {
           edges {
             node {
               slug
@@ -15,10 +13,10 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `).then(result => {
-      result.data.allContentfulSections.edges.map(({ node }) => {
+      result.data.allContentfulPage.edges.map(({ node }) => {
         createPage({
           path: `${node.slug}`,
-          component: path.resolve(`./src/templates/sections.js`),
+          component: path.resolve(`./src/templates/page.js`),
           context: {
             slug: node.slug,
           },
@@ -27,6 +25,5 @@ exports.createPages = ({ graphql, actions }) => {
       resolve()
     })
   })
-
-  return Promise.all([loadSections])
+  return Promise.all([loadPages])
 }
