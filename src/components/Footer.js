@@ -23,7 +23,7 @@ export const Footer = props => (
 				<Badge>berlin</Badge>
 			</Heading>
 			<Text mt={3} fontSize={1}>
-				environment: {process.env.NODE_ENV}
+				environment: {process.env.SITE_ENV}
 			</Text>
 		</Box>
 		<Box mb={[4, 4, 0]} width={[1, 2 / 3, 4 / 10]}>
@@ -58,7 +58,7 @@ export const FooterWithQuery = props => (
 	<StaticQuery
 		query={graphql`
 			query {
-				allContentfulPage {
+				pages: allContentfulPage {
 					edges {
 						node {
 							title
@@ -71,7 +71,7 @@ export const FooterWithQuery = props => (
 		render={data => (
 			<Footer
 				{...props}
-				links={data.allContentfulPage.edges.map(({ node }) => node)}
+				links={data.pages.edges.map(({ node }) => node)}
 			/>
 		)}
 	/>
