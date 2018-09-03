@@ -6,19 +6,19 @@ import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 
 const SectionsTemplate = ({ data }) => {
-  const d = data.contentfulPage
+  const d = data.page
   return (
     <Layout>
       <SEO
         title={d.title}
-        description={d.body.childMarkdownRemark.excerpt}
+        description={d.body.markdown.excerpt}
         pageUrl={d.slug}
       />
       <Box is="article">
         <Heading>{d.title}</Heading>
         <div
           dangerouslySetInnerHTML={{
-            __html: d.body.childMarkdownRemark.html,
+            __html: d.body.markdown.html,
           }}
         />
       </Box>
@@ -28,11 +28,11 @@ const SectionsTemplate = ({ data }) => {
 
 export const query = graphql`
   query($slug: String!) {
-    contentfulPage(slug: { eq: $slug }) {
+    page: contentfulPage(slug: { eq: $slug }) {
       title
       slug
       body {
-        childMarkdownRemark {
+        markdown: childMarkdownRemark {
           html
           excerpt
         }
