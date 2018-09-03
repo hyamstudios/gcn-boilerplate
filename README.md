@@ -1,23 +1,31 @@
 # gatsby-starter-gcn
 
+## Setup Documentation
+
 A starter template to build amazing static websites with Gatsby, Contentful and Netlify. Inspired by [gatsby-contentful-starter](https://github.com/contentful-userland/gatsby-contentful-starter).
 
 ## Features
 
-- Contentful integration with ready to go placeholder content
-- Netlify integration including a pre-built contact form
-- Minimal responsive design - made to customize or tear apart
-- Styled components
-- SEO Friendly Component
-  - JSON-LD Schema
-  - OpenGraph sharing support
-  - Sitemap Generation
-- Google Analytics
-- Progressive Web app
-- Offline Support
-- RSS Feed
-- [Gatsby Standard module](https://www.npmjs.com/package/eslint-config-gatsby-standard) for linting Javascript with StandardJS
-- Stylelint support for Styled Components to lint the CSS in JS
+-   Contentful integration with ready to go placeholder content
+-   Netlify integration including a pre-built contact form
+-   Minimal responsive design - made to customize or tear apart
+-   Styled components
+-   SEO Friendly Component
+    -   JSON-LD Schema
+    -   OpenGraph sharing support
+    -   Sitemap Generation
+-   Google Analytics
+-   Progressive Web app
+-   Offline Support
+-   RSS Feed
+-   [Gatsby Standard module](https://www.npmjs.com/package/eslint-config-gatsby-standard) for linting Javascript with StandardJS
+-   Stylelint support for Styled Components to lint the CSS in JS
+
+## Git Structure
+
+-   `master` will push to live site. It is a good idea to rely on pull requests to update this branch.
+-   `stage` will push to stage stie, where clients can preview their content.
+-   `develop` is where developers work on. You can directly work on this branch if there are very few people on the project. It is recommended to use workflow like GitFlow when there are complicated features, or more people are involved.
 
 ## Demo
 
@@ -116,12 +124,12 @@ GOOGLE_ANALYTICS
 
 ## Useful Tips
 
-- If you make edits to your Contentful space while running `gatsby develop` you will need to stop it and rerun the command to see the changes reflected. For example a new post or page will not automatically show up until the website has been rebuilt.
+-   If you make edits to your Contentful space while running `gatsby develop` you will need to stop it and rerun the command to see the changes reflected. For example a new post or page will not automatically show up until the website has been rebuilt.
 
-- ~The template assumes you have at least **one page**, **one post** and **one tag** in Contentful. If you do not the website will fail to build.~
+-   ~The template assumes you have at least **one page**, **one post** and **one tag** in Contentful. If you do not the website will fail to build.~
 
-- The SEO component assumes you have entered at least one meta description in Contentful for a post and one for a page. If you do not the website will fail to build. See the Content and SEO section above.
+-   The SEO component assumes you have entered at least one meta description in Contentful for a post and one for a page. If you do not the website will fail to build. See the Content and SEO section above.
 
-- **DO NOT** store your Contentful access tokens or space ids anywhere in GitHub. Treat them like passwords.
+-   **DO NOT** store your Contentful access tokens or space ids anywhere in GitHub. Treat them like passwords.
 
-- **Yarn Users:** remove the `yarn*` line from the `.gitignore` file to avoid discrepancies in the Netlify deploy.
+-   **Yarn Users:** remove the `yarn*` line from the `.gitignore` file to avoid discrepancies in the Netlify deploy.
