@@ -22,14 +22,23 @@ export const Footer = props => (
 				hy.am studios
 				<Badge>berlin</Badge>
 			</Heading>
+			<Text mt={3} fontSize={1}>
+				environment: {process.env.NODE_ENV}
+			</Text>
 		</Box>
 		<Box mb={[4, 4, 0]} width={[1, 2 / 3, 4 / 10]}>
+			<Heading pb={4} fontSize={2}>
+				Our Mission
+			</Heading>
 			<Text fontSize={1} lineHeight={1.35} pr={[0, 4, 4]}>
 				Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed et
 				fermentum sem, quis consectetur libero.{' '}
 			</Text>
 		</Box>
 		<Box mb={[3, 3, 0]} width={[1, 1 / 3, 2 / 10]}>
+			<Heading pb={4} fontSize={2}>
+				Links
+			</Heading>
 			<FooterLink to="/">Home</FooterLink>
 			{props.links.map(link => (
 				<FooterLink key={link.slug} to={link.slug}>
