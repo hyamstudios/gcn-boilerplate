@@ -68,6 +68,7 @@ inquirer
             accessToken: previewToken,
           },
           production: {
+            host: 'cdn.contentful.com',
             spaceId,
             accessToken,
           },
