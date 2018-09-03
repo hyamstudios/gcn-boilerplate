@@ -22,9 +22,6 @@ export const Footer = props => (
 				hy.am studios
 				<Badge>berlin</Badge>
 			</Heading>
-			<Text mt={3} fontSize={1}>
-				environment: {process.env.SITE_ENV}
-			</Text>
 		</Box>
 		<Box mb={[4, 4, 0]} width={[1, 2 / 3, 4 / 10]}>
 			<Heading pb={4} fontSize={2}>
