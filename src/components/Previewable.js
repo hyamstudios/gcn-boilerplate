@@ -1,6 +1,6 @@
 let Previewable = null
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.CONTENTFUL_HOST !== 'preview.contentful.com') {
 	// No-op
 	Previewable = function(component) {
 		return component
@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'production') {
 	const client = createClient({
 		space: process.env.SPACE_ID,
 		accessToken: process.env.ACCESS_TOKEN,
-		host: 'preview.contentful.com',
+		host: process.env.CONTENTFUL_HOST,
 	})
 	Previewable = function(Component, query) {
 		return class _Previewable extends React.Component {
