@@ -98,3 +98,15 @@ module.exports = {
     'gatsby-plugin-netlify',
   ],
 }
+
+exports.modifyWebpackConfig = ({ config, stage }) => {
+  if (process.env.GATSBY_PREVIEW === 'true') {
+    var Webpack = require('webpack')
+    config.plugin('webpack-define', Webpack.DefinePlugin, [
+      {
+        'process.env.SPACE_ID': process.env.SPACE_ID,
+        'process.env.ACCESS_TOKEN': process.env.ACCESS_TOKEN,
+      },
+    ])
+  }
+}
