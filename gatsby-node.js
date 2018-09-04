@@ -29,3 +29,16 @@ exports.createPages = ({ graphql, actions }) => {
   })
   return Promise.all([loadPages])
 }
+
+exports.onCreateWebpackConfig = ({ actions, plugins }) => {
+  if (process.env.GATSBY_PREVIEW === 'true') {
+    actions.setWebpackConfig({
+      plugins: [
+        plugins.define({
+          'process.env.SPACE_ID': JSON.stringify(process.env.SPACE_ID),
+          'process.env.ACCESS_TOKEN': JSON.stringify(process.env.ACCESS_TOKEN),
+        }),
+      ],
+    })
+  }
+}
