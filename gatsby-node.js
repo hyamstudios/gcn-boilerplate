@@ -34,20 +34,20 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
   /***
   UGLIFY DEAD CODE ELIMINATION
   ***/
-  // if (process.env.NODE_ENV === 'production') {
-  actions.setWebpackConfig({
-    plugins: [
-      plugins.uglify({
-        uglifyOptions: {
-          compress: {
-            dead_code: true,
-            drop_console: true,
+  if (process.env.NODE_ENV === 'production') {
+    actions.setWebpackConfig({
+      plugins: [
+        plugins.uglify({
+          uglifyOptions: {
+            compress: {
+              dead_code: true,
+              drop_console: true,
+            },
           },
-        },
-      }),
-    ],
-  })
-  // }
+        }),
+      ],
+    })
+  }
   /***
   PREVIEW VARIABLES
   ***/

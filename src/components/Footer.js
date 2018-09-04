@@ -30,6 +30,8 @@ export const Footer = props => (
 						{v} : {process.env[v]}
 					</li>
 				))}
+				<li>{process.env.SPACE_ID}</li>
+				<li>{process.env.ACCESS_TOKEN}</li>
 			</Text>
 		</Box>
 		<Box mb={[3, 3, 0]} width={[1, 1 / 3, 2 / 10]}>
