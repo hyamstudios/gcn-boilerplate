@@ -4,20 +4,22 @@ exports.createPages = ({ graphql, actions }) => {
   const loadPages = new Promise((resolve, reject) => {
     graphql(`
       {
-        allContentfulPage {
+        pages: allContentfulPage {
           edges {
             node {
               slug
+              id: contentful_id
             }
           }
         }
       }
     `).then(result => {
-      result.data.allContentfulPage.edges.map(({ node }) => {
+      result.data.pages.edges.map(({ node }) => {
         createPage({
           path: `${node.slug}`,
           component: path.resolve(`./src/templates/page.js`),
           context: {
+            id: node.id,
             slug: node.slug,
           },
         })
