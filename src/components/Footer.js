@@ -20,7 +20,7 @@ export const Footer = props => (
 		<Box mb={[3, 3, 0]} width={[1, 1, 4 / 10]}>
 			<Heading>
 				hy.am studios
-				<Badge>berlin</Badge>
+				<Badge>{process.env.NODE_ENV}</Badge>
 			</Heading>
 		</Box>
 		<Box mb={[4, 4, 0]} width={[1, 2 / 3, 4 / 10]}>
