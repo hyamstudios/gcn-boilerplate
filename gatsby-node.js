@@ -31,11 +31,42 @@ exports.createPages = ({ graphql, actions }) => {
 }
 
 exports.onCreateWebpackConfig = ({ actions, plugins }) => {
+  /***
+  UGLIFY DEAD CODE ELIMINATION
+  ***/
+  // if (process.env.NODE_ENV === 'production') {
+  actions.setWebpackConfig({
+    plugins: [
+      plugins.uglify({
+        uglifyOptions: {
+          compress: {
+            dead_code: true,
+            drop_console: true,
+          },
+        },
+      }),
+    ],
+  })
+  // }
+  /***
+  PREVIEW VARIABLES
+  ***/
+  const isPreviewEnabled = process.env.GATSBY_PREVIEW === 'true'
+  if (isPreviewEnabled) {
+    console.warn(
+      'Warning: Webpack is bundling in Contentful Preview Tokens, please make sure this version is only distribute in private environment. '
+    )
+  }
   actions.setWebpackConfig({
     plugins: [
       plugins.define({
-        'process.env.SPACE_ID': JSON.stringify(process.env.SPACE_ID),
-        'process.env.ACCESS_TOKEN': JSON.stringify(process.env.ACCESS_TOKEN),
+        __PREVIEW__ENABLED__: isPreviewEnabled,
+        __PREVIEW__SPACE_ID__: isPreviewEnabled
+          ? JSON.stringify(process.env.SPACE_ID)
+          : null,
+        __PREVIEW__ACCESS_TOKEN__: isPreviewEnabled
+          ? JSON.stringify(process.env.ACCESS_TOKEN)
+          : null,
       }),
     ],
   })
