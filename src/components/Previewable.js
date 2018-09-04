@@ -1,17 +1,12 @@
 let Previewable = null
 
-if (process.env.CONTENTFUL_HOST !== 'preview.contentful.com') {
-	// No-op
-	Previewable = function(component) {
-		return component
-	}
-} else {
+if (process.env.GATSBY_PREVIEW === 'true') {
 	const React = require('react')
 	const createClient = require('contentful').createClient
 	const client = createClient({
 		space: process.env.SPACE_ID,
 		accessToken: process.env.ACCESS_TOKEN,
-		host: process.env.CONTENTFUL_HOST,
+		host: 'preview.contentful.com',
 	})
 	Previewable = function(Component, query) {
 		return class _Previewable extends React.Component {
@@ -44,6 +39,11 @@ if (process.env.CONTENTFUL_HOST !== 'preview.contentful.com') {
 				)
 			}
 		}
+	}
+} else {
+	// No-op
+	Previewable = function(component) {
+		return component
 	}
 }
 

@@ -18,19 +18,18 @@ export const Footer = props => (
 		color="white"
 	>
 		<Box mb={[3, 3, 0]} width={[1, 1, 4 / 10]}>
-			<Heading>
-				hy.am studios
-				<Badge>{process.env.NODE_ENV}</Badge>
-				<Badge>{process.env.CONTENTFUL_HOST}</Badge>
-			</Heading>
+			<Heading>hy.am studios</Heading>
 		</Box>
 		<Box mb={[4, 4, 0]} width={[1, 2 / 3, 4 / 10]}>
 			<Heading pb={4} fontSize={2}>
-				Our Mission
+				Environment Variables
 			</Heading>
 			<Text fontSize={1} lineHeight={1.35} pr={[0, 4, 4]}>
-				Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed et
-				fermentum sem, quis consectetur libero.{' '}
+				{Object.keys(process.env).map(v => (
+					<li key={v}>
+						{v} : {process.env[v]}
+					</li>
+				))}
 			</Text>
 		</Box>
 		<Box mb={[3, 3, 0]} width={[1, 1 / 3, 2 / 10]}>
