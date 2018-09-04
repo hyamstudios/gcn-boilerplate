@@ -44,7 +44,7 @@ export const query = graphql`
   }
 `
 
-export default Previewable(PageTemplate, async (client, props) => {
+export default Previewable(PageTemplate, async ({ client, props, helpers }) => {
   const entry = await client.getEntry(props.data.page.contentful_id)
   const data = {
     ...props.data,
@@ -52,10 +52,10 @@ export default Previewable(PageTemplate, async (client, props) => {
   data.page.title = entry.fields.title
   data.page.slug = entry.fields.slug
   data.page.body = {
-    markdown: {
-      html: entry.fields.body,
-      excerpt: entry.fields.body,
-    },
+    markdown: helpers.remark(entry.fields.body, {
+      excerptLength: props.data.page.body.markdown.excerpt.length,
+      fields: Object.keys(props.data.page.body.markdown),
+    }),
   }
   return data
 })
