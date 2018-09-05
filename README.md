@@ -19,7 +19,9 @@ If the git setup does not work for you. You can change `netlify.toml` according 
 With SAO, we are able to add in more automation in the scaffolding process.
 
 1. `yarn global add sao`
-2. `sao hyamstudios/gcn-boilerplate --clone`
+2. `sao hyamstudios/gcn-boilerplate --clone --update`
+
+(important: use --update all the time to use the latest version online)
 
 ### Option 2. Manually
 
