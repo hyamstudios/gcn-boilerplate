@@ -1,10 +1,10 @@
 {
   "private": true,
-  "name": "<%= name %>",
-  "description": "<%= description %>",
-  "version": "<%= version %>",
-  "repository": "<%= repo $>",
-  "author": "<%= user %> <<%= email %>>",
+  "name": "gatsby-starter-gcn",
+  "description": "A starter template to build amazing static websites with Gatsby, Contentful and Netlify",
+  "version": "1.2.3",
+  "repository": "https://github.com/ryanwiemer/gatsby-starter-gcn",
+  "author": "Ryan Wiemer <ryan@ryanwiemer.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.5.1",
     "chalk": "^2.4.1",

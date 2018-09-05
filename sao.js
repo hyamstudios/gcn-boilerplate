@@ -1,5 +1,12 @@
+const fs = require('fs')
+const path = require('path')
+
+const pkgJSON = fs.readFileSync(
+	path.join(__dirname, 'package.json'), 'utf8'
+)
+const pkgObj = JSON.parse(pkgJSON)
+
 module.exports = {
-	// copy root directory
 	templateFolder: './',
 	prompts: {
 		name: {
@@ -8,23 +15,39 @@ module.exports = {
 		},
 		description: {
 			message: 'Describe the project',
-			default: '',
+			default: 'a hy.am project',
 		},
 		version: {
-			message: 'Project Version',
+			message: 'Version?',
 			default: '0.1.0',
 		},
 		repo: {
 			message: 'Repository of the project',
-			default: 'https://github.com/hyamstudios/',
+			default: 'https://github.com/hyamstudios/[name]',
 		},
 		user: {
 			message: 'Author name',
-			default: 'hy.am studios',
+			default: ':gitUser:',
 		},
 		email: {
 			message: 'Author email',
-			default: 'development@hyam.de',
+			default: ':gitEmail:',
 		},
+	},
+	data(answers) {
+		pkgObj.name = answers.name
+		pkgObj.description = answers.description
+		pkgObj.version = answers.version
+		pkgObj.repository = answers.repo === this.prompts.repo.default
+			? this.prompts.repo.default.replace('[folder name]', answers.name)
+			: answers.repo
+		pkgObj.author = `${answers.user} <${answers.email}>`
+		const str = JSON.stringify(pkgObj, null, 2)
+		return {
+			packageJSONContent: str,
+		}
+	},
+	post(context, stream) {
+		fs.writeFileSync(path.join(context.folderPath,'package.json'),stream.meta.data.packageJSONContent,'utf8')
 	},
 }
