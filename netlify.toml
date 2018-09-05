@@ -7,15 +7,10 @@
 	publish = "public/"
 	command = "yarn build"
 
-	[build.environment]
-
-		SPACE_ID = "PLACEHOLDER_SPACE_ID"
-
 [context.production]
 
 	[context.production.environment]
 
-		ACCESS_TOKEN = "PLACEHOLDER_ACCESS_TOKEN"
 		GATSBY_PREVIEW = "false"
 		CONTENTFUL_HOST = "cdn.contentful.com"
 
@@ -23,7 +18,6 @@
 
 	[context.stage.environment]
 
-		ACCESS_TOKEN = "PLACEHOLDER_PREVIEW_TOKEN"
 		GATSBY_PREVIEW = "true"
 		CONTENTFUL_HOST = "preview.contentful.com"
 
@@ -31,6 +25,5 @@
 
 	[context.develop.environment]
 
-		ACCESS_TOKEN = "PLACEHOLDER_PREVIEW_TOKEN"
 		GATSBY_PREVIEW = "true"
 		CONTENTFUL_HOST = "preview.contentful.com"

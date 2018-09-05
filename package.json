@@ -44,7 +44,7 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "sh ./bin/build.sh",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "dev": "yarn develop",
     "test": "npm run lint:css && npm run lint:js && npm run check-pretty",
