@@ -8,7 +8,10 @@ try {
     production: {
       host: process.env.CONTENTFUL_HOST,
       spaceId: process.env.SPACE_ID,
-      accessToken: process.env.ACCESS_TOKEN,
+      accessToken:
+        process.env.GATSBY_PREVIEW === 'true'
+          ? process.env.PREVIEW_TOKEN
+          : process.env.ACCESS_TOKEN,
     },
   }
 } finally {
