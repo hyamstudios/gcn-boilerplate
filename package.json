@@ -47,6 +47,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "dev": "yarn develop",
+    "dev-preview": "GATSBY_PREVIEW=true yarn dev",
     "test": "npm run lint:css && npm run lint:js && npm run check-pretty",
     "setup": "node ./bin/setup.js",
     "lint:js": "eslint --ext .js,.jsx .",

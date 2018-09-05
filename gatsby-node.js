@@ -65,7 +65,7 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
           ? JSON.stringify(process.env.SPACE_ID)
           : null,
         __PREVIEW__ACCESS_TOKEN__: isPreviewEnabled
-          ? JSON.stringify(process.env.ACCESS_TOKEN)
+          ? JSON.stringify(process.env.PREVIEW_TOKEN)
           : null,
       }),
     ],

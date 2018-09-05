@@ -97,8 +97,8 @@ Edit `/src/styles/theme.js`
 
 ```
 ACCESS_TOKEN
+PREVIEW_TOKEN
 SPACE_ID
-GOOGLE_ANALYTICS
 ```
 
 4.  Navigate to Netlify: **Deploys**. Click `Trigger deploy` to manually trigger a deploy to confirm the website is building successfully using your build environment variables. At this point be aware that every time you push to `master` a deploy will automatically start and be published to production.

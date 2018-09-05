@@ -13,6 +13,7 @@
 
 		GATSBY_PREVIEW = "false"
 		CONTENTFUL_HOST = "cdn.contentful.com"
+		GOOGLE_ANALYTICS = ""
 
 [context.stage]
 
@@ -20,6 +21,7 @@
 
 		GATSBY_PREVIEW = "true"
 		CONTENTFUL_HOST = "preview.contentful.com"
+		GOOGLE_ANALYTICS = ""
 
 [context.develop]
 
@@ -27,3 +29,4 @@
 
 		GATSBY_PREVIEW = "true"
 		CONTENTFUL_HOST = "preview.contentful.com"
+		GOOGLE_ANALYTICS = ""
