@@ -7,7 +7,7 @@ const pkgJSON = fs.readFileSync(
 const pkgObj = JSON.parse(pkgJSON)
 
 module.exports = {
-	templateFolder: './',
+	templateFolder: __dirname,
 	prompts: {
 		name: {
 			message: 'Name of the project',
