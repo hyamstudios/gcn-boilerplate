@@ -58,7 +58,7 @@ Our current solution is the `Previewable` component. There are a few downsides w
 
 3. Preview API key and Space id will be exposed in the generated javascript files. Please do not enable Realtime Preview on `master` (production) branch avoid publishing the version with Realtime Preview.
 
-For the detailed usage, check the detailed documentation here: <docs/realtime-preview.md>
+For the detailed usage, check the detailed documentation here: [docs/realtime-preview.md](docs/realtime-preview.md)
 
 ## Customization
 
@@ -81,4 +81,4 @@ This is a work-in-progress.
 
 -   You can replace the `share.jpg` and `logo-512` files in the `static/logos` directory. After replacing these files ensure that you edit the image size dimensions specified in `/src/utils/siteConfig.js`
 
-On the `SEO` component: <docs/SEO.md>
+On the `SEO` component: [docs/seo.md](docs/seo.md)
