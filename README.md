@@ -1,58 +1,64 @@
-# gatsby-starter-gcn
+# HYAM-GCN-STARTER
 
-## Setup Documentation
+Originated from <https://github.com/ryanwiemer/gatsby-starter-gcn>.
 
-A starter template to build amazing static websites with Gatsby, Contentful and Netlify. Inspired by [gatsby-contentful-starter](https://github.com/contentful-userland/gatsby-contentful-starter).
+## Prerequisites
 
-## Features
+-   Prepare Contentful delivery/preview and management API for your project.
+-   Setup the Git Repo with 3 branches `master` `stage` `develop`
+    -   master: production branch, live site. It is a good idea to protect it from being accidentally pushed.
+    -   stage: where clients will preview their content.
+    -   develop: internal review
 
--   Contentful integration with ready to go placeholder content
--   Netlify integration including a pre-built contact form
--   Minimal responsive design - made to customize or tear apart
--   Styled components
--   SEO Friendly Component
-    -   JSON-LD Schema
-    -   OpenGraph sharing support
-    -   Sitemap Generation
--   Google Analytics
--   Progressive Web app
--   Offline Support
--   RSS Feed
--   [Gatsby Standard module](https://www.npmjs.com/package/eslint-config-gatsby-standard) for linting Javascript with StandardJS
--   Stylelint support for Styled Components to lint the CSS in JS
+If the git setup does not work for you. You can change `netlify.toml` according to your need.
 
-## Git Structure
+## Use the boilerplate
 
--   `master` will push to live site. It is a good idea to rely on pull requests to update this branch.
--   `stage` will push to stage stie, where clients can preview their content.
--   `develop` is where developers work on. You can directly work on this branch if there are very few people on the project. It is recommended to use workflow like GitFlow when there are complicated features, or more people are involved.
+### Option 1. Using SAO (Recommended)
 
-## Demo
+With SAO, we are able to add in more automation in the scaffolding process.
 
-https://gcn.netlify.com/
+1. `yarn global add sao`
+2. `sao hyamstudios/gcn-boilerplate --clone`
 
-## Getting Started
+### Option 2. Manually
 
-### Install
+Download the repo and place it into the desetination.
 
-```
-git clone https://github.com/ryanwiemer/gatsby-starter-gcn.git
-npm i
-```
+## Setup the project
 
-Or via the [Gatsby CLI](https://www.npmjs.com/package/gatsby-cli)
+1. run `yarn` to install packages
+2. run `yarn setup` and fill in your Contentful Space ID & API keys. `.env` and `.contentful.json` will be generated. They contain credentials and please avoid committing them into your git repo (they are gitignored by default).
+3. if you have a different git setup, please review `netlify.toml`. ([netlify.toml file reference](https://www.netlify.com/docs/netlify-toml-reference/))
+4. you can now setup a site in Netlify, link it to the git repo.
+5. Set the following Build Environment Variables:
+    - ACCESS_TOKEN -- Contentful Delivery API key
+    - PREVIEW_TOKEN -- Contentful Preview API key
+    - SPACE_ID -- Contentful Space ID
+6. Create 2 Build Hooks, one for `master` (production rebuild), and one for `stage` (preview rebuild). Optionally you can create one for develop.
+7. Add the webhooks into your Contentful project. `TODO: Hook Trigger Settings`
 
-```
-gatsby new gatsby-starter-gcn https://github.com/ryanwiemer/gatsby-starter-gcn.git
-```
+## Deployment
 
-### Setup Contentful
+You can enable Continuous Deployment in Netlify for all branches.
 
-1.  [Sign up](https://www.contentful.com/sign-up/) for Contentful and create a new empty space
+In this boilerplate, branch `develop` and `stage` have semi real-time preview set to true (enabled).
 
-2.  `npm run setup`
+### (Semi) Realtime Preview
 
-3.  Enter in the requested info for your Contentful space found here: **app.contentful.com** → **Space Settings** → **API keys**. You will need to provide both a standard API key (first tab) and a management key (second tab).
+Gatsby is a static website generator, it has to rebuild the whole website when there are updates from Contentful (via webhook) or from your git repo (via Netlify). Sometimes the rebuild process can take more than 2 minutes.
+
+To let the clients preview their changes almost instantly in our website, we have to write our own solution. (At least before Gatsby Preview is out. )
+
+Our current solution is the `Previewable` component. There are a few downsides with this:
+
+1. We cannot reuse our graphql query, and we have to write the query again in REST API for preview.
+
+2. You'll need to output the exact same structure with the API call. Sometimes it can be quite challenging or impossible (e.g. you won't be able to do image transform on the fly with the Previewable component), when you are using some special features that is only there because of some awesome Gatsby plugins.
+
+3. Preview API key and Space id will be exposed in the generated javascript files. Please do not enable Realtime Preview on `master` (production) branch avoid publishing the version with Realtime Preview.
+
+For the detailed usage, check the detailed documentation here: <docs/realtime-preview.md>
 
 ## Customization
 
@@ -71,65 +77,8 @@ Edit `/src/styles/theme.js`
 
 ### Content and SEO
 
-1.  You can replace the `share.jpg` and `logo-512` files in the `static/logos` directory. After replacing these files ensure that you edit the image size dimensions specified in `/src/utils/siteConfig.js`
-2.  Meta descriptions are defined in Contentful. If you choose to leave this field blank on new posts a 320 character excerpt of the post/page will be used.
-3.  **IMPORTANT:** Be sure to manually enter at least one meta description on a page and post in Contentful or the site will fail to build.
+This is a work-in-progress.
 
-## Deployment
+-   You can replace the `share.jpg` and `logo-512` files in the `static/logos` directory. After replacing these files ensure that you edit the image size dimensions specified in `/src/utils/siteConfig.js`
 
-### Manual Netlify Deployment
-
-1.  Run `gatsby build`
-
-2.  Drag and drop the folder `/public/` into Netlify
-
-### Netlify Deployment From Git (Recommended)
-
-1.  [New Netlify website from Git](https://app.netlify.com/start)
-
-### Theme
-
-Edit `/src/styles/theme.js`
-
-2.  Connect with GitHub and select your repo
-
-3.  Navigate to Netlify: **Settings** → **Build & Deploy** → **Build Environment Variables**. Add the following environment variables using the Space ID and Production Access Token from Contentful. Additionally if desired you can enter a Google Analytics ID. The variables must be named exactly like this in order to work properly.
-
-```
-ACCESS_TOKEN
-PREVIEW_TOKEN
-SPACE_ID
-```
-
-4.  Navigate to Netlify: **Deploys**. Click `Trigger deploy` to manually trigger a deploy to confirm the website is building successfully using your build environment variables. At this point be aware that every time you push to `master` a deploy will automatically start and be published to production.
-
-## Additional Settings
-
-### Contentful Webhook (Optional)
-
-1.  Navigate to Netlify:
-    **Settings** → **Build & Deploy** → **Build hooks**.
-    Create a new build hook.
-
-2.  Navigate to Contentful:
-    **app.contentful.com** → **Space Settings** → **Webhooks**. Create a webhook using the Netlify build URL that you just created
-    and configure which events should trigger the build on production. For example the following will rebuild the production website every time a post or page is published, unpublished or deleted:
-
-### Netlify Form Notifications (Optional)
-
-1.  Navigate to Netlify:
-    **Forms** → **Notifications**
-
-2.  Click the add notification dropdown and select your desired notification method.
-
-## Useful Tips
-
--   If you make edits to your Contentful space while running `gatsby develop` you will need to stop it and rerun the command to see the changes reflected. For example a new post or page will not automatically show up until the website has been rebuilt.
-
--   ~The template assumes you have at least **one page**, **one post** and **one tag** in Contentful. If you do not the website will fail to build.~
-
--   The SEO component assumes you have entered at least one meta description in Contentful for a post and one for a page. If you do not the website will fail to build. See the Content and SEO section above.
-
--   **DO NOT** store your Contentful access tokens or space ids anywhere in GitHub. Treat them like passwords.
-
--   **Yarn Users:** remove the `yarn*` line from the `.gitignore` file to avoid discrepancies in the Netlify deploy.
+On the `SEO` component: <docs/SEO.md>
