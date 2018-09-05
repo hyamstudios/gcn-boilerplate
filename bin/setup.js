@@ -78,7 +78,13 @@ inquirer
       )
     )
     console.log(`Config file ${chalk.yellow(configFilePath)} written`)
-
+    const envFilePath = path.resolve(__dirname, '..', '.env')
+    writeFileSync(
+      envFilePath,
+      `SPACE_ID="${spaceId}"
+ACCESS_TOKEN="${accessToken}"
+PREVIEW_TOKEN="${previewToken}"`
+    )
     return { spaceId, managementToken }
   })
   .then(({ spaceId, managementToken }) =>
