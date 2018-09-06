@@ -1,26 +1,10 @@
 import sys from 'system-components'
-import { keys, includes } from 'lodash'
-import { styles } from 'styled-system'
-
-export const autoUseAllStyles = props => {
-	if (!props) {
-		return {}
-	}
-	const propsKeys = keys(props)
-	return keys(styles).reduce((a, f) => {
-		const includeThisFunction = propsKeys.some(key =>
-			includes(keys(styles[f].propTypes), key)
-		)
-		return includeThisFunction ? { ...a, ...styles[f](props) } : a
-	}, {})
-}
-
-export const pseudoStyle = (selector, props) => ({
-	[selector]: autoUseAllStyles(props),
-})
+import { mixed } from 'styled-system'
 
 export const WithPseudoStyle = (component, selector, subset) =>
-	sys({ is: component }, props => pseudoStyle(selector, props[subset]))
+	sys({ is: component }, props => ({
+		[selector]: mixed(props[subset]),
+	}))
 
 export const WithHover = component =>
 	WithPseudoStyle(component, '&:hover', 'hover')
