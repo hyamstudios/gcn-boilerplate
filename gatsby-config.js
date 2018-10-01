@@ -74,7 +74,12 @@ module.exports = {
         icon: `static${config.siteLogo}`,
       },
     },
-    'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+        navigateFallbackWhitelist: []
+      }
+    },
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {

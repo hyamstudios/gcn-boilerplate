@@ -8,7 +8,6 @@ exports.createPages = ({ graphql, actions }) => {
           edges {
             node {
               slug
-              id: contentful_id
             }
           }
         }
@@ -19,7 +18,6 @@ exports.createPages = ({ graphql, actions }) => {
           path: `${node.slug}`,
           component: path.resolve(`./src/templates/page.js`),
           context: {
-            id: node.id,
             slug: node.slug,
           },
         })
@@ -35,17 +33,18 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
   UGLIFY DEAD CODE ELIMINATION
   ***/
   if (process.env.NODE_ENV === 'production') {
+    const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
     actions.setWebpackConfig({
-      plugins: [
-        plugins.uglify({
-          uglifyOptions: {
-            compress: {
+      optimization: {
+        minimizer: [
+          new UglifyJsPlugin({
+            uglifyOptions: {
               dead_code: true,
               drop_console: true,
             },
-          },
-        }),
-      ],
+          }),
+        ],
+      },
     })
   }
   /***
