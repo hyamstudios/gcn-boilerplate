@@ -22,8 +22,6 @@
     "gatsby-plugin-sitemap": "^2.0.1",
     "gatsby-plugin-styled-components": "^3.0.0",
     "gatsby-source-contentful": "^2.0.1",
-    "gatsby-source-filesystem": "^2.0.1",
-    "gatsby-transformer-remark": "^2.1.4",
     "inquirer": "^6.2.0",
     "marksy": "^6.1.0",
     "path": "^0.12.7",
