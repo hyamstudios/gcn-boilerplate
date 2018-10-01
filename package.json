@@ -34,6 +34,7 @@
     "rebass": "^2.1.0",
     "styled-components": "^3.4.5",
     "styled-system": "^3.0.2",
+    "uglifyjs-webpack-plugin": "^2.0.1",
     "whatwg-fetch": "^2.0.4"
   },
   "keywords": [
