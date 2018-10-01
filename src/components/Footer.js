@@ -20,20 +20,7 @@ export const Footer = props => (
 		<Box mb={[3, 3, 0]} width={[1, 1, 4 / 10]}>
 			<Heading>hy.am studios</Heading>
 		</Box>
-		<Box mb={[4, 4, 0]} width={[1, 2 / 3, 4 / 10]}>
-			<Heading pb={4} fontSize={2}>
-				Environment Variables
-			</Heading>
-			<Text fontSize={1} lineHeight={1.35} pr={[0, 4, 4]}>
-				{Object.keys(process.env).map(v => (
-					<li key={v}>
-						{v} : {process.env[v]}
-					</li>
-				))}
-				<li>{process.env.SPACE_ID}</li>
-				<li>{process.env.ACCESS_TOKEN}</li>
-			</Text>
-		</Box>
+		<Box mb={[4, 4, 0]} width={[1, 2 / 3, 4 / 10]} />
 		<Box mb={[3, 3, 0]} width={[1, 1 / 3, 2 / 10]}>
 			<Heading pb={4} fontSize={2}>
 				Links

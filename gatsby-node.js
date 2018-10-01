@@ -8,7 +8,6 @@ exports.createPages = ({ graphql, actions }) => {
           edges {
             node {
               slug
-              id: contentful_id
             }
           }
         }
@@ -19,7 +18,6 @@ exports.createPages = ({ graphql, actions }) => {
           path: `${node.slug}`,
           component: path.resolve(`./src/templates/page.js`),
           context: {
-            id: node.id,
             slug: node.slug,
           },
         })
