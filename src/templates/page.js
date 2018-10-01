@@ -46,7 +46,7 @@ export default Previewable(PageTemplate, async ({ client, props, helpers }) => {
   data.page.title = entry.fields.title
   data.page.slug = entry.fields.slug
   data.page.body = {
-    body: entry.fields.body,
+    markdown: entry.fields.body,
   }
   return data
 })
