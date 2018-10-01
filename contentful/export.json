@@ -91,11 +91,21 @@
           "linkType": "Asset"
         },
         {
+          "id": "description",
+          "name": "description",
+          "type": "Text",
+          "localized": false,
+          "required": true,
+          "validations": [],
+          "disabled": false,
+          "omitted": false
+        },
+        {
           "id": "body",
           "name": "body",
           "type": "Text",
           "localized": false,
-          "required": false,
+          "required": true,
           "validations": [],
           "disabled": false,
           "omitted": false
@@ -333,6 +343,13 @@
         {
           "fieldId": "image",
           "widgetId": "assetLinkEditor"
+        },
+        {
+          "fieldId": "description",
+          "widgetId": "singleLine",
+          "settings": {
+            "helpText": "page description (SEO)"
+          }
         },
         {
           "fieldId": "body",
