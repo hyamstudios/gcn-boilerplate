@@ -47,24 +47,6 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-prismjs`,
-          },
-          {
-            resolve: `gatsby-remark-images-contentful`,
-            options: {
-              maxWidth: 1024,
-              backgroundColor: 'white',
-              linkImagesToOriginal: false,
-            },
-          },
-        ],
-      },
-    },
-    {
       resolve: 'gatsby-source-contentful',
       options:
         process.env.NODE_ENV === 'development'
