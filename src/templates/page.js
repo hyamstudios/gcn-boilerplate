@@ -1,28 +1,25 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-
 import { Box, Heading } from 'rebass'
+import marksy from 'marksy' // avoid using marksy/jsx, it will make the bundled JS large and slow.
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-
 import Previewable from '../components/Previewable'
+
+const compile = marksy({
+  createElement: React.createElement,
+  elements: {},
+})
 
 const PageTemplate = ({ data }) => {
   const d = data.page
+  const compiled = compile(d.body && d.body.markdown ? d.body.markdown : '')
   return (
     <Layout>
-      <SEO
-        title={d.title}
-        description={d.body.markdown.excerpt}
-        pageUrl={d.slug}
-      />
+      <SEO title={d.title} description={d.body.body} pageUrl={d.slug} />
       <Box is="article">
         <Heading>{d.title}</Heading>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: d.body.markdown.html,
-          }}
-        />
+        <Box css={'img {max-width: 100%;}'}>{compiled.tree}</Box>
       </Box>
     </Layout>
   )
@@ -35,10 +32,7 @@ export const query = graphql`
       title
       slug
       body {
-        markdown: childMarkdownRemark {
-          html
-          excerpt
-        }
+        markdown: body
       }
     }
   }
@@ -52,10 +46,7 @@ export default Previewable(PageTemplate, async ({ client, props, helpers }) => {
   data.page.title = entry.fields.title
   data.page.slug = entry.fields.slug
   data.page.body = {
-    markdown: helpers.remark(entry.fields.body, {
-      excerptLength: props.data.page.body.markdown.excerpt.length,
-      fields: Object.keys(props.data.page.body.markdown),
-    }),
+    body: entry.fields.body,
   }
   return data
 })
