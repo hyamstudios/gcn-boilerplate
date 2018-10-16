@@ -191,6 +191,17 @@
           "omitted": false
         },
         {
+          "id": "baseUrl",
+          "name": "baseURL",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
           "id": "siteTitleAlt",
           "name": "Site Title (Alternative)",
           "type": "Symbol",
@@ -408,6 +419,10 @@
         {
           "fieldId": "siteTitle",
           "widgetId": "singleLine"
+        },
+        {
+          "fieldId": "baseUrl",
+          "widgetId": "urlEditor"
         },
         {
           "fieldId": "siteTitleAlt",
