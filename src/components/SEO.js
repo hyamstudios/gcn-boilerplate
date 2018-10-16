@@ -1,28 +1,30 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
-import config from '../utils/siteConfig'
+import { StaticQuery, graphql } from 'gatsby'
 
 class SEO extends Component {
   render() {
+    const { defaults } = this.props
     let {
-      title = config.siteTitle,
-      description = config.siteDescription,
-      image = config.siteUrl + config.shareImage,
-      imgWidth = config.shareImageWidth,
-      imgHeight = config.shareImageHeight,
-      pageUrl = '',
+      title = '',
+      description = defaults.description,
+      image = defaults.shareImage.fixed.src,
+      imgWidth = defaults.shareImage.fixed.width,
+      imgHeight = defaults.shareImage.fixed.height,
+      url = '',
     } = this.props
 
-    pageUrl = config.siteUrl + pageUrl
+    title = defaults.titleShort + (title ? ` | ${title}` : '')
+    url = defaults.baseUrl + url
 
     // Default Website Schema
     const schemaOrgJSONLD = [
       {
         '@context': 'http://schema.org',
         '@type': 'WebSite',
-        url: config.siteUrl,
-        name: config.siteTitle,
-        alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
+        url: url,
+        name: title,
+        alternateName: defaults.titleAlt ? defaults.titleAlt : '',
       },
     ]
 
@@ -37,10 +39,11 @@ class SEO extends Component {
           {JSON.stringify(schemaOrgJSONLD)}
         </script>
 
+        <title>{title}</title>
+
         {/* OpenGraph tags */}
         <meta property="og:title" content={title} />
-
-        <meta property="og:url" content={pageUrl} />
+        <meta property="og:url" content={url} />
         <meta property="og:image" content={image} />
         <meta property="og:image:width" content={imgWidth} />
         <meta property="og:image:height" content={imgHeight} />
@@ -50,7 +53,7 @@ class SEO extends Component {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:creator"
-          content={config.userTwitter ? config.userTwitter : ''}
+          content={defaults.twitter ? defaults.twitter : ''}
         />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:image" content={image} />
@@ -60,4 +63,37 @@ class SEO extends Component {
   }
 }
 
-export default SEO
+const SEOWithQuery = props => (
+  <StaticQuery
+    query={graphql`
+      {
+        seo: allContentfulSeoConfigurations {
+          edges {
+            node {
+              baseUrl
+              title: siteTitle
+              titleAlt: siteTitleAlt
+              titleShort: shortTitle
+              description: siteDescription
+              twitter: userTwitter
+              author
+              authorUrl
+              publisher
+              copyright
+              shareImage {
+                fixed(quality: 80, width: 1200) {
+                  src
+                  width
+                  height
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => <SEO defaults={data.seo.edges[0].node} {...props} />}
+  />
+)
+
+export default SEOWithQuery
