@@ -539,6 +539,9 @@
         },
         "body": {
           "en-US": "# Lorem ipsum dolor sit amet\n\nconsectetur adipiscing elit. Sed et fermentum sem, quis consectetur libero. Ut ultricies mauris ut velit tristique, dapibus suscipit tortor vehicula. Mauris sed nulla auctor, semper purus ac, aliquam justo. Nullam et pulvinar massa, et volutpat leo. Nullam aliquam neque odio, at blandit quam sodales ut. Proin ullamcorper turpis eleifend ligula rhoncus, at facilisis eros aliquam. Nunc magna quam, scelerisque nec mauris sed, placerat fringilla eros. Donec tincidunt convallis dui, a pellentesque orci dictum sit amet. Sed pellentesque sed libero ac luctus. Cras venenatis odio et erat sodales, id feugiat urna interdum. Curabitur sed enim et ligula congue vestibulum ut ut velit. Pellentesque eget ultrices felis. Nunc a aliquet metus, quis venenatis massa. Fusce sit amet accumsan odio."
+        },
+        "description": {
+          "en-US": "Lorem ipsum dolor sit amet"
         }
       }
     },
