@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    font-family: 'Muli', sans-serif;
+    font-family: 'Open Sans', sans-serif;
   }
 `
 export default class Template extends React.Component {
@@ -30,7 +30,7 @@ export default class Template extends React.Component {
               content="width=device-width, initial-scale=1"
             />
             <link
-              href="https://fonts.googleapis.com/css?family=Muli"
+              href="https://fonts.googleapis.com/css?family=Open+Sans"
               rel="stylesheet"
             />
           </Helmet>
