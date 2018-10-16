@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Heading, Code, Text } from 'rebass'
+import { Box, Card, Heading, Text } from 'rebass'
 
 import Layout from '../components/Layout'
 
@@ -15,7 +15,7 @@ export default class Page extends React.Component {
           <br />
           You can still load CMS content by
           <Card my={3}>
-            <Code>{"import {QueryStatic} from 'gatsby'"}</Code>
+            <Box>{"import {QueryStatic} from 'gatsby'"}</Box>
           </Card>
           Please check Gatsby documentation for more information.
         </Text>
