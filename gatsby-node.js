@@ -30,6 +30,14 @@ exports.createPages = ({ graphql, actions }) => {
 
 exports.onCreateWebpackConfig = ({ actions, plugins }) => {
   /***
+  ABSOLUTE IMPORTS
+  ***/
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    },
+  })
+  /***
   UGLIFY DEAD CODE ELIMINATION
   ***/
   if (process.env.NODE_ENV === 'production') {

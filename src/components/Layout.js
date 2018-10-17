@@ -1,46 +1,49 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
-import { Provider, Box } from 'rebass'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import { Box } from 'rebass'
+import theme from 'styles/theme'
+import Menu from 'components/Menu'
+import Footer from 'components/Footer'
+import SEO from 'components/SEO'
+import favicon from 'images/favicon.ico'
 
-import favicon from '../images/favicon.ico'
-import '../styles/global'
-
-import theme from '../styles/theme'
-import config from '../utils/siteConfig'
-
-import Menu from '../components/Menu'
-import Footer from '../components/Footer'
-
+const GlobalStyle = createGlobalStyle`
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+  }
+`
 export default class Template extends React.Component {
   render() {
     return (
-      <Provider theme={theme}>
-        <Helmet>
-          <title>{config.siteTitle}</title>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href={favicon} />
-          <meta name="description" content={config.siteDescription} />
-          <meta property="og:title" content={config.siteTitle} />
-          <meta property="og:url" content={config.siteUrl} />
-          <meta property="og:locale" content="en_US" />
-          <meta property="og:type" content="website" />
-          <meta property="og:site_name" content={config.siteTitle} />
-        </Helmet>
-        <Box className="siteRoot">
-          <Menu />
+      <ThemeProvider theme={theme}>
+        <Fragment>
+          <SEO />
+          <GlobalStyle />
+          <Helmet>
+            <link rel="icon" href={favicon} />
+            <meta charSet="utf-8" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
+            />
+            <link
+              href="https://fonts.googleapis.com/css?family=Open+Sans"
+              rel="stylesheet"
+            />
+          </Helmet>
           <Box
-            style={{ minHeight: '80vh' }}
-            my={4}
-            mx={3}
-            className="siteContent"
+            mx="auto"
+            css="min-height: 100vh;display: grid;grid-template-rows: auto 1fr auto;"
           >
-            <Menu.Pad />
-            {this.props.children}
+            <Menu />
+            <Box as="main">{this.props.children}</Box>
+            <Footer />
           </Box>
-          <Footer />
-        </Box>
-      </Provider>
+        </Fragment>
+      </ThemeProvider>
     )
   }
 }

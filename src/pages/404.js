@@ -1,6 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Box, Text, Lead as Title } from 'rebass'
+import { Box, Text, Heading as Title } from 'rebass'
 import Layout from '../components/Layout'
 
 const NotFoundPage = () => (

@@ -1,15 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import 'whatwg-fetch' // Fetch Polyfill
+import { Text, Button, Box } from 'rebass'
 
-import {
-  Modal,
-  Button,
-  Textarea as Message,
-  Input as Email,
-  Input as Name,
-  Button as Submit,
-} from 'rebass'
+const Message = props => (
+  <Text as="textarea" {...props}>
+    {props.children}
+  </Text>
+)
+const Email = props => (
+  <Text as="input" {...props}>
+    {props.children}
+  </Text>
+)
+const Name = props => (
+  <Text as="input" {...props}>
+    {props.children}
+  </Text>
+)
+const Submit = props => <Button {...props}>{props.children}</Button>
 
 const Form = p => <form {...p}>{p.children}</form>
 
@@ -109,13 +118,13 @@ class ContactForm extends React.Component {
         </Submit>
 
         {this.state.showModal && (
-          <Modal>
+          <Box>
             <p>
               Thank you for reaching out. I will get back to you as soon as
               possible.
             </p>
             <Button onClick={this.closeModal}>Okay</Button>
-          </Modal>
+          </Box>
         )}
       </Form>
     )
