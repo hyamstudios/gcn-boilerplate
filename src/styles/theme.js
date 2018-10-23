@@ -1,3 +1,4 @@
+// @flow
 const TYPESCALE_BASELINE = 16
 const TYPESCALE_SCALE = 1.26
 

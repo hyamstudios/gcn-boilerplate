@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component Multiline snapshot - line breaks 1`] = `
+Array [
+  "1",
+  <br />,
+  "2",
+  <br />,
+  "3",
+]
+`;
+
+exports[`component Multiline snapshot - no line break 1`] = `"1"`;
+
+exports[`component Multiline snapshot - no trailing new lines 1`] = `
+Array [
+  "1",
+  <br />,
+  "2",
+  <br />,
+  "3",
+  <br />,
+  "",
+]
+`;

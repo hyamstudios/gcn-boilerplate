@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
+import * as React from 'react'
 import { Flex, Box, Image } from 'rebass'
 
 /**
@@ -12,7 +12,14 @@ import { Flex, Box, Image } from 'rebass'
  *
  */
 
-const MediaObject = props => {
+type Props = {
+  image: string,
+  imageElement: React.Node,
+  reverse: boolean,
+  children: React.Node,
+}
+
+const MediaObject = (props: Props) => {
   const img = (
     <Box key="img" width={[1, 1 / 2]}>
       {props.image ? (
@@ -40,10 +47,6 @@ const MediaObject = props => {
       {props.reverse ? arr.reverse() : arr}
     </Flex>
   )
-}
-MediaObject.propTypes = {
-  reverse: PropTypes.bool,
-  image: PropTypes.string,
 }
 
 export default MediaObject

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import { Heading, Text, Box, Image, Link } from 'rebass'
 import marksy from 'marksy'
@@ -82,14 +83,14 @@ const compile = marksy({
   },
 })
 
-const Markdown = props => {
+const Markdown = (props: any) => {
   const compiled = compile(props.markdown)
   return compiled.tree
 }
 
 export default Markdown
 
-export const Example = props => {
+export const Example = (props: any) => {
   const compiled = compile(`An h1 header
 ============
 

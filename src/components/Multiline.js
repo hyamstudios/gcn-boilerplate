@@ -1,11 +1,31 @@
-import React, { Fragment } from 'react'
+// @flow
+import * as React from 'react'
 
-const Multiline = props => {
-  const a = props.children.split('\n').map((s, index, array) => (
-    <Fragment key={index}>
+type Props = {
+  children: string,
+  removeTrailingNewLines: boolean,
+}
+
+const Multiline = (props: Props) => {
+  let arr: string[] = props.children.split('\n')
+  if (props.removeTrailingNewLines) {
+    const indexOfLastNonEmptyString: number = arr.reduce(
+      (pointer, value, index) => {
+        if (value !== '') {
+          return index
+        } else {
+          return pointer
+        }
+      },
+      0
+    )
+    arr = arr.slice(0, indexOfLastNonEmptyString + 1)
+  }
+  const a = arr.map((s, index, array) => (
+    <React.Fragment key={index}>
       {s}
       {index === array.length - 1 ? false : <br />}
-    </Fragment>
+    </React.Fragment>
   ))
   return a
 }

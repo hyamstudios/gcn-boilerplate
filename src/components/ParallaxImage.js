@@ -1,41 +1,58 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
+import * as React from 'react'
 import { Box, Image } from 'rebass'
 
-export default class ParallaxImage extends React.Component {
-  static propTypes = {
-    layers: PropTypes.array,
-    y0: PropTypes.number,
-    yd: PropTypes.number,
-    perspectiveScale: PropTypes.number,
-  }
+type Layer = {
+  image: {
+    src?: string,
+    srcSet?: string,
+    sizes?: string,
+  },
+}
+
+type Props = {
+  layers: Array<Layer>,
+  y0: number,
+  yd: number,
+  perspectiveScale: number,
+  transition: string,
+}
+
+type States = {
+  isVisible: boolean,
+  progress: number,
+}
+
+export default class ParallaxImage extends React.Component<Props, States> {
   static defaultProps = {
     y0: 50,
     yd: -100,
     transition: 'transform 0.1s ease-out',
     perspectiveScale: 0.75,
   }
-  $el = React.createRef()
+  $el: { current: null | HTMLElement } = React.createRef()
   state = {
     isVisible: false,
     progress: 0,
   }
-  update = evt => {
-    const r = this.$el.current.getBoundingClientRect()
-    const isVisible = r.top <= window.innerHeight && r.bottom >= 0
-    const progress = Math.min(
-      1,
-      Math.max(
-        0,
-        (window.innerHeight - r.top) / (window.innerHeight + r.height)
+  update = (evt: ?Event) => {
+    if (this.$el.current != null) {
+      const r = this.$el.current.getBoundingClientRect()
+      const isVisible = r.top <= window.innerHeight && r.bottom >= 0
+      const progress = Math.min(
+        1,
+        Math.max(
+          0,
+          (window.innerHeight - r.top) / (window.innerHeight + r.height)
+        )
       )
-    )
-    this.setState({
-      isVisible,
-      progress,
-    })
+      this.setState({
+        isVisible,
+        progress,
+      })
+    }
   }
-  getTransform(index) {
+  getTransform(index: number) {
     const factor = Math.pow(this.props.perspectiveScale, index)
     const { progress } = this.state
     const y0 = this.props.y0 * factor

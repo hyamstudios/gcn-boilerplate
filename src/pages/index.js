@@ -1,9 +1,10 @@
+// @flow
 import React from 'react'
-import { Box, Card, Heading, Text } from 'rebass'
+import { Heading, Text } from 'rebass'
 
 import Layout from '../components/Layout'
 
-export default class Page extends React.Component {
+export default class Page extends React.Component<any> {
   render() {
     return (
       <Layout>
@@ -13,11 +14,8 @@ export default class Page extends React.Component {
           <br />
           By default, this page does not query anything from Contentful.
           <br />
-          You can still load CMS content by
-          <Card my={3}>
-            <Box>{"import {QueryStatic} from 'gatsby'"}</Box>
-          </Card>
-          Please check Gatsby documentation for more information.
+          You can still load CMS content by Please check Gatsby documentation
+          for more information.
         </Text>
       </Layout>
     )
