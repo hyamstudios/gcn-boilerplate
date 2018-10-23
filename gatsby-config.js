@@ -38,6 +38,7 @@ module.exports = {
     },
   },
   plugins: [
+    'gatsby-plugin-flow',
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
@@ -77,8 +78,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-offline',
       options: {
-        navigateFallbackWhitelist: []
-      }
+        navigateFallbackWhitelist: [],
+      },
     },
     {
       resolve: 'gatsby-plugin-nprogress',
