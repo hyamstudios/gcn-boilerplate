@@ -16,27 +16,12 @@ const SEO = props => {
   title = defaults.titleShort + (title ? ` | ${title}` : '');
   url = defaults.baseUrl + url;
 
-  // Default Website Schema
-  const schemaOrgJSONLD = [
-    {
-      '@context': 'http://schema.org',
-      '@type': 'WebSite',
-      url,
-      name: title,
-      alternateName: defaults.titleAlt ? defaults.titleAlt : '',
-    },
-  ];
-
   return (
     <Helmet>
       {/* General tags */}
+      <title>{title}</title>
       <meta name="image" content={image} />
       <meta name="description" content={description} />
-
-      {/* Schema.org tags */}
-      <script type="application/ld+json">{JSON.stringify(schemaOrgJSONLD)}</script>
-
-      <title>{title}</title>
 
       {/* OpenGraph tags */}
       <meta property="og:title" content={title} />
@@ -85,13 +70,10 @@ const SEOWithQuery = props => (
             node {
               baseUrl
               title: siteTitle
-              titleAlt: siteTitleAlt
-              titleShort: shortTitle
               description: siteDescription
               twitter: userTwitter
               author
               authorUrl
-              publisher
               copyright
               shareImage {
                 fixed(quality: 80, width: 1200) {

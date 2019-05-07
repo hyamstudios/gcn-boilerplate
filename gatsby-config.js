@@ -2,20 +2,6 @@ require('dotenv').config();
 const config = require('./src/utils/siteConfig');
 
 module.exports = {
-  // Note: it must *not* have a trailing slash.
-  // pathPrefix: `/example`,
-  siteMetadata: {
-    siteUrl: config.siteUrl,
-    rssMetadata: {
-      site_url: config.siteUrl,
-      feed_url: `${config.siteUrl}/rss.xml`,
-      title: config.siteTitle,
-      description: config.siteDescription,
-      image_url: `${config.siteUrl}${config.siteLogo}`,
-      author: config.author,
-      copyright: config.copyright,
-    },
-  },
   plugins: [
     {
       resolve: 'gatsby-plugin-canonical-urls',
@@ -28,9 +14,9 @@ module.exports = {
     {
       resolve: 'gatsby-source-contentful',
       options: {
-        host: process.env.CONTENTFUL_HOST,
-        spaceId: process.env.SPACE_ID,
-        accessToken: process.env.ACCESS_TOKEN,
+        host: process.env.CFUL_CONTENTFUL_HOST,
+        spaceId: process.env.CFUL_SPACE_ID,
+        accessToken: process.env.CFUL_ACCESS_TOKEN,
       },
     },
     {
