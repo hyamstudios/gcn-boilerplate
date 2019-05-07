@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "eslint": "^4.19.1",
-    "eslint-config-gatsby-standard": "^1.2.2",
+    "eslint-config-hyam": "https://github.com/hyamstudios/eslint-config-hyam.git",
     "prettier": "^1.14.2",
     "stylelint": "9.5.0",
     "stylelint-config-prettier": "^4.0.0",
