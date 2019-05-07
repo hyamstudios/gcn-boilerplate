@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Field, Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import qs from 'qs';
 
 export default () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -15,6 +16,7 @@ export default () => {
   return (
     <Formik
       initialValues={{
+        'form-name': 'contact',
         name: '',
         email: '',
         message: '',
@@ -24,8 +26,8 @@ export default () => {
         try {
           await axios({
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            data: JSON.stringify(values),
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            data: qs.stringify(values),
             url: '/',
           });
           setFormSubmitted(true);
@@ -43,7 +45,8 @@ export default () => {
       })}
     >
       {({ isValid, isSubmitting, status, handleSubmit }) => (
-        <form name="contact" netlify noValidate onSubmit={handleSubmit}>
+        <form name="contact" netlify data-netlify="true" noValidate="true" onSubmit={handleSubmit}>
+          <Field type="hidden" name="form-name" />
           <fieldset>
             <legend>contact detail</legend>
             <label htmlFor="name">Name</label>
