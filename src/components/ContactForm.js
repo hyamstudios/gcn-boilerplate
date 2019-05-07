@@ -45,7 +45,7 @@ export default () => {
       })}
     >
       {({ isValid, isSubmitting, status }) => (
-        <Form name="contact" data-netlify data-netlify-honeypot="bot" noValidate>
+        <Form name="contact" data-netlify data-netlify-honeypot="bot">
           <Field type="hidden" name="form-name" />
           <p hidden>
             <label htmlFor="bot">
