@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
-import { shape, string, number } from 'prop-types';
+import { shape, string, number, object } from 'prop-types';
 
 const SEO = props => {
   const { defaults } = props;
