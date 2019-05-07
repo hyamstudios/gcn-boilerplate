@@ -58,21 +58,15 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
     });
   }
   /** *
-  PREVIEW VARIABLES
+
   ** */
-  const isPreviewEnabled = process.env.GATSBY_PREVIEW === 'true';
-  if (isPreviewEnabled) {
-    console.warn(
-      'Warning: Webpack is bundling in Contentful Preview Tokens, please make sure this version is only distribute in private environment. ',
-    );
+  if (process.env.NODE_ENV === 'development') {
+    actions.setWebpackConfig({
+      resolve: {
+        alias: {
+          'react-dom': '@hot-loader/react-dom',
+        },
+      },
+    });
   }
-  actions.setWebpackConfig({
-    plugins: [
-      plugins.define({
-        __PREVIEW__ENABLED__: isPreviewEnabled,
-        __PREVIEW__SPACE_ID__: isPreviewEnabled ? JSON.stringify(process.env.SPACE_ID) : null,
-        __PREVIEW__ACCESS_TOKEN__: isPreviewEnabled ? JSON.stringify(process.env.PREVIEW_TOKEN) : null,
-      }),
-    ],
-  });
 };
