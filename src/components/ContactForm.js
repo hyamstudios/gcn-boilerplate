@@ -44,6 +44,7 @@ export default () => {
     >
       {({ isValid, isSubmitting, status }) => (
         <Form name="contact" data-netlify="true" noValidate>
+          <input type="hidden" name="form-name" value="contact" />
           <fieldset>
             <legend>contact detail</legend>
             <label htmlFor="name">Name</label>
