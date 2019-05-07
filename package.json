@@ -27,6 +27,7 @@
     "inquirer": "^6.2.0",
     "marksy": "^6.1.0",
     "path": "^0.12.7",
+    "polished": "^3.3.0",
     "prismjs": "^1.15.0",
     "prop-types": "^15.7.2",
     "react": "^16.4.2",

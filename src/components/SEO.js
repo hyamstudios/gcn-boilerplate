@@ -13,7 +13,7 @@ const SEO = props => {
   } = props;
   let { title, url } = props;
 
-  title = defaults.titleShort + (title ? ` | ${title}` : '');
+  title = defaults.title + (title ? ` | ${title}` : '');
   url = defaults.baseUrl + url;
 
   return (
@@ -53,12 +53,12 @@ SEO.propTypes = {
   url: string,
 };
 SEO.defaultProps = {
-  title: '',
+  title: undefined,
   description: undefined,
   image: undefined,
   imgWidth: undefined,
   imgHeight: undefined,
-  url: '',
+  url: undefined,
 };
 
 const SEOWithQuery = props => (

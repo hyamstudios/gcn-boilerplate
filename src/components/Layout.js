@@ -27,9 +27,9 @@ export default props => {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
         </Helmet>
-        <Box mx="auto" css="min-height: 100vh;display: grid;grid-template-rows: auto 1fr auto;">
+        <Box css="min-height: 100vh;display: grid;grid-template-rows: auto 1fr auto;">
           <Menu />
-          <Box as="main" {...props} />
+          <Box as="main" m="2" {...props} />
           <FooterWithQuery />
         </Box>
       </Fragment>
