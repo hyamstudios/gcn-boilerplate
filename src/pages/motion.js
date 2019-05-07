@@ -15,7 +15,9 @@ class MotionExample extends React.Component {
     },
     mouse: { x: 0, y: 0 },
   }
+
   $mousePool = React.createRef()
+
   render() {
     return (
       <Layout>
@@ -116,7 +118,7 @@ class MotionExample extends React.Component {
           <Box
             ref={this.$mousePool}
             my={10}
-            bg={'#66E'}
+            bg="#66E"
             css="border-radius:25px"
             style={{ height: 600 }}
             onMouseMove={e => {

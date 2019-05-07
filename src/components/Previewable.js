@@ -11,10 +11,12 @@ if (__PREVIEW__ENABLED__) {
 		return class _Previewable extends React.Component {
 			static displayName = `Previewable(${Component.name ||
 				Component.displayName})`
+
 			state = {
 				isQueryDone: false,
 				queryData: null,
 			}
+
 			async fetch() {
 				this.setState({
 					isQueryDone: false,
@@ -31,14 +33,17 @@ if (__PREVIEW__ENABLED__) {
 					})
 				}
 			}
+
 			componentDidUpdate(prevProps, prevState) {
 				if (prevProps.data !== this.props.data) {
 					this.fetch()
 				}
 			}
+
 			componentDidMount() {
 				this.fetch()
 			}
+
 			render() {
 				return (
 					<Component

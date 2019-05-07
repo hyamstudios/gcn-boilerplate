@@ -29,17 +29,17 @@ exports.createPages = ({ graphql, actions }) => {
 }
 
 exports.onCreateWebpackConfig = ({ actions, plugins }) => {
-  /***
+  /** *
   ABSOLUTE IMPORTS
-  ***/
+  ** */
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     },
   })
-  /***
+  /** *
   UGLIFY DEAD CODE ELIMINATION
-  ***/
+  ** */
   if (process.env.NODE_ENV === 'production') {
     const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
     actions.setWebpackConfig({
@@ -55,9 +55,9 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
       },
     })
   }
-  /***
+  /** *
   PREVIEW VARIABLES
-  ***/
+  ** */
   const isPreviewEnabled = process.env.GATSBY_PREVIEW === 'true'
   if (isPreviewEnabled) {
     console.warn(

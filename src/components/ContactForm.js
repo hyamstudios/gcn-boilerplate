@@ -24,7 +24,7 @@ const Form = p => <form {...p}>{p.children}</form>
 
 const encode = data => {
   return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .map(key => `${encodeURIComponent(key)  }=${  encodeURIComponent(data[key])}`)
     .join('&')
 }
 

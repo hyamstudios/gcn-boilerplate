@@ -1,11 +1,11 @@
 // Setup modified from https://github.com/contentful-userland/gatsby-contentful-starter
 
 const spaceImport = require('contentful-import')
-const exportFile = require('../contentful/export.json')
 const inquirer = require('inquirer')
 const chalk = require('chalk')
 const path = require('path')
 const { writeFileSync } = require('fs')
+const exportFile = require('../contentful/export.json')
 
 console.log(`
   To set up this project you need to provide your Space ID

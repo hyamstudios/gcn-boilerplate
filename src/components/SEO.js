@@ -22,7 +22,7 @@ class SEO extends Component {
       {
         '@context': 'http://schema.org',
         '@type': 'WebSite',
-        url: url,
+        url,
         name: title,
         alternateName: defaults.titleAlt ? defaults.titleAlt : '',
       },

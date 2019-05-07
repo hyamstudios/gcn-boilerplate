@@ -9,17 +9,21 @@ export default class ParallaxImage extends React.Component {
     yd: PropTypes.number,
     perspectiveScale: PropTypes.number,
   }
+
   static defaultProps = {
     y0: 50,
     yd: -100,
     transition: 'transform 0.1s ease-out',
     perspectiveScale: 0.75,
   }
+
   $el = React.createRef()
+
   state = {
     isVisible: false,
     progress: 0,
   }
+
   update = evt => {
     const r = this.$el.current.getBoundingClientRect()
     const isVisible = r.top <= window.innerHeight && r.bottom >= 0
@@ -35,6 +39,7 @@ export default class ParallaxImage extends React.Component {
       progress,
     })
   }
+
   getTransform(index) {
     const factor = Math.pow(this.props.perspectiveScale, index)
     const { progress } = this.state
@@ -42,13 +47,16 @@ export default class ParallaxImage extends React.Component {
     const yd = this.props.yd * factor
     return `translateY(${y0 + progress * yd}px)`
   }
+
   componentDidMount() {
     window.addEventListener('scroll', this.update, { passive: true })
     this.update()
   }
+
   componentWillUnmount() {
     window.removeEventListener('scroll', this.update)
   }
+
   render() {
     const { layers, transition } = this.props
     const images = layers.map((l, index, arr) => (

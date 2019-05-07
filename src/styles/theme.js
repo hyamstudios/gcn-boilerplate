@@ -15,8 +15,8 @@ module.exports = {
       .fill(0)
       .map((v, index) => index)
       .reduce((acc, value) => {
-        const key = value + '/20'
-        acc[key] = ((100 * value) / 20).toFixed(0) + '%'
+        const key = `${value  }/20`
+        acc[key] = `${((100 * value) / 20).toFixed(0)  }%`
         return acc
       }, {}),
     // prettier-ignore

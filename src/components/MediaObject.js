@@ -16,7 +16,7 @@ const MediaObject = props => {
   const img = (
     <Box key="img" width={[1, 1 / 2]}>
       {props.image ? (
-        <Image width={'100%'} height="auto" src={props.image} />
+        <Image width="100%" height="auto" src={props.image} />
       ) : props.imageElement ? (
         props.imageElement
       ) : (
@@ -36,7 +36,7 @@ const MediaObject = props => {
   )
   const arr = [img, box]
   return (
-    <Flex flexWrap={'wrap'} {...props}>
+    <Flex flexWrap="wrap" {...props}>
       {props.reverse ? arr.reverse() : arr}
     </Flex>
   )
