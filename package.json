@@ -47,16 +47,14 @@
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "serve": "gatsby serve",
-    "dev": "yarn develop",
-    "dev-preview": "GATSBY_PREVIEW=true yarn dev",
-    "test": "npm run lint:css && npm run lint:js && npm run check-pretty",
     "setup": "node ./bin/setup.js",
+    "lint:all": "npm run lint:css && npm run lint:js && npm run lint:prettier",
     "lint:js": "eslint --ext .js,.jsx .",
     "lint:css": "stylelint 'src/**/*.js'",
-    "check-pretty": "prettier -l {,src/**/}*.{js,jsx,json,css,scss}",
-    "format": "prettier --write \"src/**/*.js\""
+    "lint:prettier": "prettier -l {,src/**/}*.{js,jsx,json,css,scss}",
+    "lint:prettier:format": "prettier --write \"src/**/*.js\""
   },
   "devDependencies": {
     "eslint": "^4.19.1",
