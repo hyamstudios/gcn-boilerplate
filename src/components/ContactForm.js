@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Field, Formik, ErrorMessage } from 'formik';
+import { Form, Field, Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import qs from 'qs';
@@ -44,9 +44,15 @@ export default () => {
         message: Yup.string().required('Please leave us a message'),
       })}
     >
-      {({ isValid, isSubmitting, status, handleSubmit }) => (
-        <form name="contact" netlify data-netlify="true" noValidate="true" onSubmit={handleSubmit}>
+      {({ isValid, isSubmitting, status }) => (
+        <Form name="contact" data-netlify data-netlify-honeypot="bot" noValidate>
           <Field type="hidden" name="form-name" />
+          <p hidden>
+            <label htmlFor="bot">
+              Do not fill this out
+              <Field type="text" name="bot" />
+            </label>
+          </p>
           <fieldset>
             <legend>contact detail</legend>
             <label htmlFor="name">Name</label>
@@ -63,7 +69,7 @@ export default () => {
             </button>
             {status && status.submitError && <div>{status.submitError}</div>}
           </fieldset>
-        </form>
+        </Form>
       )}
     </Formik>
   );
