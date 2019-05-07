@@ -5,7 +5,6 @@ import marksy from 'marksy'; // avoid using marksy/jsx, it will make the bundled
 import { shape, string } from 'prop-types';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import Previewable from '../components/Previewable';
 
 const compile = marksy({
   createElement: React.createElement,
@@ -50,15 +49,4 @@ export const query = graphql`
   }
 `;
 
-export default Previewable(PageTemplate, async ({ client, props }) => {
-  const entry = await client.getEntry(props.data.page.contentful_id);
-  const data = {
-    ...props.data,
-  };
-  data.page.title = entry.fields.title;
-  data.page.slug = entry.fields.slug;
-  data.page.body = {
-    markdown: entry.fields.body,
-  };
-  return data;
-});
+export default PageTemplate;
