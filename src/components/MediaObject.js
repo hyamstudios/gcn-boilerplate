@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Flex, Box, Image } from 'rebass'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Flex, Box, Image } from 'rebass';
 
 /**
  *
@@ -13,37 +13,31 @@ import { Flex, Box, Image } from 'rebass'
  */
 
 const MediaObject = props => {
+  const { image, imageElement, children, reverse } = props;
   const img = (
     <Box key="img" width={[1, 1 / 2]}>
-      {props.image ? (
-        <Image width="100%" height="auto" src={props.image} />
-      ) : props.imageElement ? (
-        props.imageElement
-      ) : (
-        false
-      )}
+      {image ? <Image width="100%" height="auto" src={image} /> : imageElement || false}
     </Box>
-  )
+  );
   const box = (
-    <Box
-      key="box"
-      width={[1, 1 / 2]}
-      pl={props.reverse ? [0] : [0, `5%`]}
-      pr={!props.reverse ? [0] : [0, `5%`]}
-    >
-      {props.children}
+    <Box key="box" width={[1, 1 / 2]} pl={reverse ? [0] : [0, `5%`]} pr={!reverse ? [0] : [0, `5%`]}>
+      {children}
     </Box>
-  )
-  const arr = [img, box]
+  );
+  const arr = [img, box];
   return (
     <Flex flexWrap="wrap" {...props}>
-      {props.reverse ? arr.reverse() : arr}
+      {reverse ? arr.reverse() : arr}
     </Flex>
-  )
-}
+  );
+};
 MediaObject.propTypes = {
   reverse: PropTypes.bool,
   image: PropTypes.string,
-}
+};
+MediaObject.defaultProps = {
+  reverse: false,
+  image: undefined,
+};
 
-export default MediaObject
+export default MediaObject;

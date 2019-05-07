@@ -1,6 +1,6 @@
-import sys from 'system-components'
-import { style, util } from 'styled-system'
-import { Box } from 'rebass'
+import sys from 'system-components';
+import { style, util } from 'styled-system';
+import { Box } from 'rebass';
 
 /*
 
@@ -24,8 +24,8 @@ Example:
 
  */
 
-const px = util.px
-const num = util.num
+const { px, num } = util;
+
 export const Grid = sys(
   {
     is: Box,
@@ -49,9 +49,9 @@ export const Grid = sys(
     key: 'spaces',
     transformValue: px,
   }),
-  'alignItems'
-)
+  'alignItems',
+);
 
-Grid.displayName = 'Grid'
+Grid.displayName = 'Grid';
 
-export default Grid
+export default Grid;

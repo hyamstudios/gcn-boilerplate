@@ -1,25 +1,24 @@
-require('dotenv').config()
-const config = require('./src/utils/siteConfig')
+require('dotenv').config();
+const config = require('./src/utils/siteConfig');
 
-let contentfulConfig
+let contentfulConfig;
 
 try {
-  contentfulConfig = require('./.contentful')
+  /* eslint-disable-next-line */
+  contentfulConfig = require('./.contentful');
 } catch (e) {
   contentfulConfig = {
     production: {
       host: process.env.CONTENTFUL_HOST,
       spaceId: process.env.SPACE_ID,
-      accessToken:
-        process.env.GATSBY_PREVIEW === 'true'
-          ? process.env.PREVIEW_TOKEN
-          : process.env.ACCESS_TOKEN,
+      accessToken: process.env.GATSBY_PREVIEW === 'true' ? process.env.PREVIEW_TOKEN : process.env.ACCESS_TOKEN,
     },
-  }
+  };
 } finally {
-  const { spaceId, accessToken } = contentfulConfig.production
+  const { spaceId, accessToken } = contentfulConfig.production;
   if (!spaceId || !accessToken) {
-    throw new Error('Contentful space ID and access token need to be provided.')
+    /* eslint-disable-next-line */
+    throw new Error('Contentful space ID and access token need to be provided.');
   }
 }
 
@@ -49,10 +48,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-contentful',
-      options:
-        process.env.NODE_ENV === 'development'
-          ? contentfulConfig.development
-          : contentfulConfig.production,
+      options: process.env.NODE_ENV === 'development' ? contentfulConfig.development : contentfulConfig.production,
     },
     {
       resolve: 'gatsby-plugin-google-analytics',
@@ -78,8 +74,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-offline',
       options: {
-        navigateFallbackWhitelist: []
-      }
+        navigateFallbackWhitelist: [],
+      },
     },
     {
       resolve: 'gatsby-plugin-nprogress',
@@ -89,4 +85,4 @@ module.exports = {
     },
     'gatsby-plugin-netlify',
   ],
-}
+};
