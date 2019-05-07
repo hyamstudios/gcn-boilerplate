@@ -31,7 +31,7 @@ exports.createPages = ({ graphql, actions }) => {
   return Promise.all([loadPages]);
 };
 
-exports.onCreateWebpackConfig = ({ actions, plugins }) => {
+exports.onCreateWebpackConfig = ({ actions }) => {
   /** *
   ABSOLUTE IMPORTS
   ** */
