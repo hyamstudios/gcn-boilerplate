@@ -2,6 +2,9 @@ require('dotenv').config();
 const config = require('./src/utils/siteConfig');
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: config.siteUrl,
+  },
   plugins: [
     {
       resolve: 'gatsby-plugin-canonical-urls',
