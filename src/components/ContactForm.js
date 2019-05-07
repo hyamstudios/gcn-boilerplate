@@ -28,7 +28,7 @@ export default () => {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             data: qs.stringify(values),
-            url: '/',
+            url: '/?no-cache=1',
           });
           setFormSubmitted(true);
         } catch (error) {
