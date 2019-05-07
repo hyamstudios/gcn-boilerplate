@@ -43,8 +43,7 @@ export default () => {
       })}
     >
       {({ isValid, isSubmitting, status, handleSubmit }) => (
-        <form name="contact" data-netlify="true" noValidate onSubmit={handleSubmit}>
-          <input type="hidden" name="form-name" value="contact" />
+        <form name="contact" netlify noValidate onSubmit={handleSubmit}>
           <fieldset>
             <legend>contact detail</legend>
             <label htmlFor="name">Name</label>
