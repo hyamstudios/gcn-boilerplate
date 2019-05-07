@@ -1,87 +1,59 @@
-import React from 'react';
-import 'whatwg-fetch'; // Fetch Polyfill
-import { Text, Button, Box } from 'rebass';
+import React, { useState } from 'react';
+import { Form, Field, Formik, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
-const Message = props => <Text as="textarea" {...props} />;
-const Email = props => <Text as="input" {...props} />;
-const Name = props => <Text as="input" {...props} />;
-const Submit = props => <Button {...props} />;
-
-const Form = p => <form {...p}>{p.children}</form>;
-
-const encode = data => {
-  return Object.keys(data)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-    .join('&');
-};
-
-class ContactForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      email: '',
-      message: '',
-      showModal: false,
-    };
-  }
-
-  handleInputChange = event => {
-    const { value, name } = event;
-    this.setState({
-      [name]: value,
-    });
-  };
-
-  handleSubmit = event => {
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', ...this.state }),
-    })
-      .then(this.handleSuccess)
-      .catch(error => console.error(error));
-    event.preventDefault();
-  };
-
-  handleSuccess = () => {
-    this.setState({
-      name: '',
-      email: '',
-      message: '',
-      showModal: true,
-    });
-  };
-
-  closeModal = () => {
-    this.setState({ showModal: false });
-  };
-
-  render() {
-    const { name, email, message, showModal } = this.state;
+export default () => {
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  if (formSubmitted) {
     return (
-      <Form name="contact" onSubmit={this.handleSubmit} data-netlify="true" data-netlify-honeypot="bot" onClick={this.closeModal}>
-        <input type="hidden" name="form-name" value="contact" />
-        <p hidden>
-          Don’t fill this out: <input name="bot" onChange={this.handleInputChange} />
-        </p>
-
-        <Name name="name" type="text" placeholder="Full Name" value={name} onChange={this.handleInputChange} required />
-        <Email name="email" type="email" placeholder="Email" value={email} onChange={this.handleInputChange} required />
-        <Message name="message" type="text" placeholder="Message" value={message} onChange={this.handleInputChange} required />
-        <Submit name="submit" type="submit">
-          Send
-        </Submit>
-
-        {showModal && (
-          <Box>
-            <p>Thank you for reaching out. I will get back to you as soon as possible.</p>
-            <Button onClick={this.closeModal}>Okay</Button>
-          </Box>
-        )}
-      </Form>
+      <section>
+        <h2>Form submitted</h2>
+      </section>
     );
   }
-}
-
-export default ContactForm;
+  return (
+    <Formik
+      initialValues={{
+        name: '',
+        email: '',
+        message: '',
+      }}
+      onSubmit={() => {
+        setFormSubmitted(true);
+      }}
+      validationSchema={Yup.object().shape({
+        name: Yup.string().required('Please enter your name'),
+        email: Yup.string()
+          .email()
+          .required('Please enter your email'),
+        message: Yup.string().required('Please leave us a message'),
+      })}
+    >
+      {({ isValid, isSubmitting }) => (
+        <Form name="contact" method="POST" data-netlify>
+          <fieldset>
+            <legend>contact detail</legend>
+            <label htmlFor="name">
+              Name
+              <Field required type="text" name="name" />
+            </label>
+            <ErrorMessage name="name" />
+            <label htmlFor="email">
+              Email
+              <Field required type="email" name="email" />
+            </label>
+            <ErrorMessage name="email" />
+            <label htmlFor="message">
+              Message
+              <Field required component="textarea" name="message" />
+            </label>
+            <ErrorMessage name="message" />
+            <button type="submit" disabled={!isValid || isSubmitting}>
+              Submit
+            </button>
+          </fieldset>
+        </Form>
+      )}
+    </Formik>
+  );
+};

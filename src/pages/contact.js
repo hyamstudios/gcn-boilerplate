@@ -1,3 +1,3 @@
-import NewContactForm from '../components/NewContactForm';
+import ContactForm from '../components/ContactForm';
 
-export default NewContactForm;
+export default ContactForm;
