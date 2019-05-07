@@ -12,6 +12,7 @@
     "contentful": "^7.5.1",
     "contentful-import": "^7.2.0",
     "dotenv": "^8.0.0",
+    "formik": "^1.5.4",
     "gatsby": "^2.4.2",
     "gatsby-image": "^2.0.12",
     "gatsby-plugin-canonical-urls": "^2.0.5",
@@ -39,7 +40,7 @@
     "styled-system": "3.1.10",
     "system-components": "^3.0.3",
     "uglifyjs-webpack-plugin": "^2.0.1",
-    "whatwg-fetch": "^2.0.4"
+    "yup": "^0.27.0"
   },
   "keywords": [
     "gatsby"
