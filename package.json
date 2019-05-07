@@ -47,6 +47,19 @@
   ],
   "license": "MIT",
   "main": "n/a",
+  "husky": {
+    "hooks":{
+      "pre-commit": "yarn lint-staged",
+      "pre-push": "yarn test"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
@@ -61,6 +74,8 @@
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-hyam": "https://github.com/hyamstudios/eslint-config-hyam.git",
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.6",
     "prettier": "^1.14.2",
     "stylelint": "9.5.0",
     "stylelint-config-prettier": "^4.0.0",
