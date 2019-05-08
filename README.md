@@ -9,3 +9,7 @@
 
 1. create environment variables in deploy settings according to `.env-example`
 2. create `GOOGLE_ANALYTIC` env var if using google analytic
+
+## Contribution
+
+we use eslint and [commitlint](https://github.com/conventional-changelog/commitlint).
