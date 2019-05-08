@@ -20,6 +20,7 @@ export default () => {
         name: '',
         email: '',
         message: '',
+        bot: '',
       }}
       onSubmit={async (values, actions) => {
         actions.setStatus({ submitError: null });
