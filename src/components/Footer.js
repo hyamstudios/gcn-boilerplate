@@ -28,7 +28,6 @@ export const Footer = props => {
         <Heading pb={4} fontSize={2}>
           Links
         </Heading>
-        <FooterLink to="/">Home</FooterLink>
         {links.map(link => (
           <FooterLink key={link.slug} to={link.slug}>
             {link.title}
