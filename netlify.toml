@@ -1,32 +1,7 @@
-# This file will be commited into git. 
-# Please do not save credentials in this file. 
+# This file will be commited into git.
+# Please do not save credentials in this file.
 
 [build]
-
 	base = ""
 	publish = "public/"
 	command = "yarn build"
-
-[context.production]
-
-	[context.production.environment]
-
-		GATSBY_PREVIEW = "false"
-		CONTENTFUL_HOST = "cdn.contentful.com"
-		GOOGLE_ANALYTICS = ""
-
-[context.stage]
-
-	[context.stage.environment]
-
-		GATSBY_PREVIEW = "true"
-		CONTENTFUL_HOST = "preview.contentful.com"
-		GOOGLE_ANALYTICS = ""
-
-[context.develop]
-
-	[context.develop.environment]
-
-		GATSBY_PREVIEW = "true"
-		CONTENTFUL_HOST = "preview.contentful.com"
-		GOOGLE_ANALYTICS = ""

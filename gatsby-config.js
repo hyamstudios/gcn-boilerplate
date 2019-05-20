@@ -1,57 +1,34 @@
-require('dotenv').config()
-const config = require('./src/utils/siteConfig')
-let contentfulConfig
-
-try {
-  contentfulConfig = require('./.contentful')
-} catch (e) {
-  contentfulConfig = {
-    production: {
-      host: process.env.CONTENTFUL_HOST,
-      spaceId: process.env.SPACE_ID,
-      accessToken:
-        process.env.GATSBY_PREVIEW === 'true'
-          ? process.env.PREVIEW_TOKEN
-          : process.env.ACCESS_TOKEN,
-    },
-  }
-} finally {
-  const { spaceId, accessToken } = contentfulConfig.production
-  if (!spaceId || !accessToken) {
-    throw new Error('Contentful space ID and access token need to be provided.')
-  }
-}
+require('dotenv').config();
+const config = require('./src/utils/siteConfig');
 
 module.exports = {
-  // Note: it must *not* have a trailing slash.
-  // pathPrefix: `/example`,
   siteMetadata: {
     siteUrl: config.siteUrl,
-    rssMetadata: {
-      site_url: config.siteUrl,
-      feed_url: `${config.siteUrl}/rss.xml`,
-      title: config.siteTitle,
-      description: config.siteDescription,
-      image_url: `${config.siteUrl}${config.siteLogo}`,
-      author: config.author,
-      copyright: config.copyright,
-    },
   },
   plugins: [
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-postcss',
+    {
+      resolve: 'gatsby-plugin-purgecss',
+      options: {
+        printRejected: true, // Print removed selectors and processed file names
+        tailwind: true, // Enable tailwindcss support
+      },
+    },
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
         siteUrl: config.siteUrl,
       },
     },
-    'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-contentful',
-      options:
-        process.env.NODE_ENV === 'development'
-          ? contentfulConfig.development
-          : contentfulConfig.production,
+      options: {
+        host: process.env.CFUL_CONTENTFUL_HOST,
+        spaceId: process.env.CFUL_SPACE_ID,
+        accessToken: process.env.CFUL_ACCESS_TOKEN,
+      },
     },
     {
       resolve: 'gatsby-plugin-google-analytics',
@@ -77,8 +54,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-offline',
       options: {
-        navigateFallbackWhitelist: []
-      }
+        navigateFallbackWhitelist: [],
+      },
     },
     {
       resolve: 'gatsby-plugin-nprogress',
@@ -88,4 +65,4 @@ module.exports = {
     },
     'gatsby-plugin-netlify',
   ],
-}
+};

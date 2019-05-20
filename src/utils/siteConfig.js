@@ -10,13 +10,7 @@ module.exports = {
 
   copyright: 'Copyright © 2018 GCN User', // Copyright string for the RSS feed
 
-  /* Schema */
-
-  siteTitleAlt: 'HYAM GCN Gatsby Starter', // This allows an alternative site title for SEO schema.
-  shortTitle: 'hyam wiki', // Used for App manifest e.g. Mobile Home Screen
-  publisher: 'hy.am studios', // Organization name used for SEO schema
-
-  /* SEO Critical */
+  /* Social Platform Related */
 
   userTwitter: '@hyamstudios', // Change for Twitter Cards
   shareImage: '/logos/share.jpg', // Open Graph Default Share Image. 1200x1200 is recommended
@@ -26,6 +20,6 @@ module.exports = {
 
   /* PWA/OFFLINE SETTINGS */
 
-  backgroundColor: require('./../styles/theme.js').colors.backgroundColor, // Used for Offline Manifest
-  themeColor: require('./../styles/theme.js').colors.themeColor, // Used for Offline Manifest
-}
+  backgroundColor: '#FFFFFF', // Used for Offline Manifest
+  themeColor: '#000000', // Used for Offline Manifest
+};

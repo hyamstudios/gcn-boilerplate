@@ -1,29 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link as GatsbyLink } from 'gatsby'
-import { Box, Link } from 'rebass'
+import React from 'react';
+import { Link } from 'gatsby';
 
-const StyledLink = styled(Link)`
-  color: white;
-  text-decoration: none;
-  &:hover {
-    color: white;
-    text-decoration: underline;
-  }
-`
-
-const NavLink = props => (
-  <StyledLink as={GatsbyLink} {...props}>
-    {props.children}
-  </StyledLink>
-)
+const NavLink = props => <Link className="text-gray-100 no-underline hover:text-yellow-100 hover:underline" {...props} />;
 
 const Menu = () => {
   return (
-    <Box px={[1, 2]} py={2} bg="black" color="white">
-      <NavLink to="/">Home</NavLink>
-    </Box>
-  )
-}
+    <nav className="bg-gray-700 text-white">
+      <div className="container mx-auto py-2">
+        <NavLink to="/">Home</NavLink>
+      </div>
+    </nav>
+  );
+};
 
-export default Menu
+export default Menu;

@@ -4,5 +4,5 @@ public/
 .DS_Store
 *.log
 contentful-import-error-log*
-.env*
+.env
 .contentful.json

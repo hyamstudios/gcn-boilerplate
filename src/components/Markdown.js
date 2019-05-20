@@ -1,7 +1,9 @@
-import React from 'react'
-import { Heading, Text, Box, Image, Link } from 'rebass'
-import marksy from 'marksy'
-import SyntaxHighlight from './SyntaxHighlight.js'
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import React from 'react';
+import cn from 'classnames';
+import marksy from 'marksy';
+import SyntaxHighlight from './SyntaxHighlight';
 
 /*
 
@@ -15,79 +17,71 @@ const compile = marksy({
   createElement: React.createElement,
   elements: {
     h1({ id, children }) {
-      return <Heading as="h1">{children}</Heading>
+      return <h1>{children}</h1>;
     },
     h2({ id, children }) {
-      return <Heading as="h2">{children}</Heading>
+      return <h2>{children}</h2>;
     },
     h3({ id, children }) {
-      return <Heading as="h3">{children}</Heading>
+      return <h3>{children}</h3>;
     },
     h4({ id, children }) {
-      return <Heading as="h4">{children}</Heading>
+      return <h4>{children}</h4>;
     },
     h5({ id, children }) {
-      return <Heading as="h5">{children}</Heading>
+      return <h5>{children}</h5>;
     },
     blockquote({ children }) {
-      return <Box as="blockquote">{children}</Box>
+      return <blockquote>{children}</blockquote>;
     },
     hr() {
-      return <Box as="hr" css="border: none; border-bottom: 1px solid #CCC;" />
+      return <hr css="border: none; border-bottom: 1px solid #CCC" />;
     },
     ol({ children }) {
-      return <Text as="ol">{children}</Text>
+      return <ol>{children}</ol>;
     },
     ul({ children }) {
-      return <Text as="ul">{children}</Text>
+      return <ul>{children}</ul>;
     },
     p({ children }) {
-      return <Text as="p">{children}</Text>
+      return <p>{children}</p>;
     },
     a({ children, href, title, target }) {
       /*
       TODO: Setup External link detection here
        */
       return (
-        <Link as="a" href={href} title={title} target={target}>
+        <a href={href} title={title} target={target}>
           {children}
-        </Link>
-      )
+        </a>
+      );
     },
     strong({ children }) {
-      return <Text as="strong">{children}</Text>
+      return <strong>{children}</strong>;
     },
     em({ children }) {
-      return <Text as="em">{children}</Text>
+      return <em>{children}</em>;
     },
     img({ src, alt }) {
-      return <Image src={src} alt={alt} />
+      return <img src={src} alt={alt} />;
     },
     code({ language, code }) {
-      const dangerousHTML = SyntaxHighlight.getLanguage(language)
-        ? SyntaxHighlight.highlight(language, code).value
-        : code
+      const dangerousHTML = SyntaxHighlight.getLanguage(language) ? SyntaxHighlight.highlight(language, code).value : code;
       return (
-        <Box as="pre">
-          <Text
-            as="code"
-            fontFamily="mono"
-            fontSize={-1}
-            className={`hljs ${language}`}
-            dangerouslySetInnerHTML={{ __html: dangerousHTML }}
-          />
-        </Box>
-      )
+        <pre>
+          <code className={cn('font-mono text-sm hljs', language)} dangerouslySetInnerHTML={{ __html: dangerousHTML }} />
+        </pre>
+      );
     },
   },
-})
+});
 
 const Markdown = props => {
-  const compiled = compile(props.markdown)
-  return compiled.tree
-}
+  const compiled = compile(props.markdown);
+  return compiled.tree;
+};
 
-export default Markdown
+export default Markdown;
 
 export const Example = props => {
   const compiled = compile(`An h1 header
@@ -264,6 +258,6 @@ module.exports = {
 
 \`\`\`
 
-`)
-  return compiled.tree
-}
+`);
+  return compiled.tree;
+};
