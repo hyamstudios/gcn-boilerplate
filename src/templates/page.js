@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Box, Heading } from 'rebass';
 import marksy from 'marksy'; // avoid using marksy/jsx, it will make the bundled JS large and slow.
 import { shape, string } from 'prop-types';
 import Layout from '../components/Layout';
@@ -16,10 +15,10 @@ const PageTemplate = ({ data: { page } }) => {
   return (
     <Layout>
       <SEO title={page.title} description={page.body.body} pageUrl={page.slug} />
-      <Box is="article">
-        <Heading>{page.title}</Heading>
-        <Box css={'img {max-width: 100%;}'}>{compiled.tree}</Box>
-      </Box>
+      <article>
+        <h2 className="text-2xl mb-6">{page.title}</h2>
+        <div>{compiled.tree}</div>
+      </article>
     </Layout>
   );
 };

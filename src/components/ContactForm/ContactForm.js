@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { Form, Field, Formik, ErrorMessage } from 'formik';
+import { Form, Field, Formik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import qs from 'qs';
+import Button from 'components/Button';
+
+import './ContactForm.css';
+import ErrorMessage from './ErrorMessage';
 
 export default () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -46,7 +50,7 @@ export default () => {
       })}
     >
       {({ isValid, isSubmitting, status }) => (
-        <Form name="contact" data-netlify data-netlify-honeypot="bot">
+        <Form className="contactForm" name="contact" data-netlify data-netlify-honeypot="bot">
           <Field type="hidden" name="form-name" />
           <p hidden>
             <label htmlFor="bot">
@@ -55,19 +59,34 @@ export default () => {
             </label>
           </p>
           <fieldset>
-            <legend>contact detail</legend>
-            <label htmlFor="name">Name</label>
-            <Field required type="text" name="name" />
+            <legend className="text-xl">contact detail</legend>
+            <div className="contactForm-group">
+              <label className="contactForm-label" htmlFor="name">
+                Name
+              </label>
+              <Field className="contactForm-field" required type="text" name="name" />
+            </div>
             <ErrorMessage name="name" />
-            <label htmlFor="email">Email</label>
-            <Field required type="email" name="email" />
+            <div className="contactForm-group">
+              <label className="contactForm-label" htmlFor="email">
+                Email
+              </label>
+              <Field className="contactForm-field" required type="email" name="email" />
+            </div>
             <ErrorMessage name="email" />
-            <label htmlFor="message">Message</label>
-            <Field required component="textarea" name="message" />
+            <div className="contactForm-group">
+              <label className="contactForm-label" htmlFor="message">
+                Message
+              </label>
+              <Field className="contactForm-field" required component="textarea" name="message" />
+            </div>
             <ErrorMessage name="message" />
-            <button type="submit" disabled={!isValid || isSubmitting}>
+            <Button type="submit" disabled={!isValid || isSubmitting}>
               Submit
-            </button>
+            </Button>{' '}
+            <Button variant={Button.Variants.Generic} type="reset">
+              Reset
+            </Button>
             {status && status.submitError && <div>{status.submitError}</div>}
           </fieldset>
         </Form>

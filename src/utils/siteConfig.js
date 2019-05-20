@@ -1,5 +1,3 @@
-const theme = require('../styles/theme.js');
-
 module.exports = {
   /* MUST HAVES */
 
@@ -22,6 +20,6 @@ module.exports = {
 
   /* PWA/OFFLINE SETTINGS */
 
-  backgroundColor: theme.colors.backgroundColor, // Used for Offline Manifest
-  themeColor: theme.colors.themeColor, // Used for Offline Manifest
+  backgroundColor: '#FFFFFF', // Used for Offline Manifest
+  themeColor: '#000000', // Used for Offline Manifest
 };

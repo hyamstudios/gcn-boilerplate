@@ -1,0 +1,34 @@
+.btn {
+  @apply px-3 py-1 rounded;
+  transition: background-color .1s linear, color .1s linear;
+}
+.btn:disabled {
+  @apply bg-gray-300 text-gray-400 !important;
+}
+.btn.primary {
+  @apply bg-blue-600 text-white;
+}
+.btn.primary:hover {
+  @apply bg-blue-500;
+}
+.btn.primary:active {
+  @apply bg-blue-700;
+}
+.btn.secondary {
+  @apply bg-orange-600 text-white;
+}
+.btn.secondary:hover {
+  @apply bg-orange-500;
+}
+.btn.secondary:active {
+  @apply bg-orange-700;
+}
+.btn.generic {
+  @apply bg-gray-600 text-white;
+}
+.btn.generic:hover {
+  @apply bg-gray-500;
+}
+.btn.generic:active {
+  @apply bg-gray-700;
+}

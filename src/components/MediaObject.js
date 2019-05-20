@@ -1,6 +1,6 @@
 import React from 'react';
+import cn from 'classnames';
 import PropTypes from 'prop-types';
-import { Flex, Box, Image } from 'rebass';
 
 /**
  *
@@ -13,22 +13,26 @@ import { Flex, Box, Image } from 'rebass';
  */
 
 const MediaObject = props => {
-  const { image, imageElement, children, reverse } = props;
+  const { alt, image, imageElement, children, reverse } = props;
   const img = (
-    <Box key="img" width={[1, 1 / 2]}>
-      {image ? <Image width="100%" height="auto" src={image} /> : imageElement || false}
-    </Box>
+    <div key="img" className="w-full md:w-1/2">
+      {image ? <img alt={alt} className="w-full h-auto" src={image} /> : imageElement || false}
+    </div>
   );
+  const classForBox = cn('w-full md:w-1/2', {
+    'pl-0 md:pl-4': !reverse,
+    'pr-0 md:pr-4': reverse,
+  });
   const box = (
-    <Box key="box" width={[1, 1 / 2]} pl={reverse ? [0] : [0, `5%`]} pr={!reverse ? [0] : [0, `5%`]}>
+    <div key="box" className={classForBox}>
       {children}
-    </Box>
+    </div>
   );
   const arr = [img, box];
   return (
-    <Flex flexWrap="wrap" {...props}>
+    <div className="flex flex-wrap" {...props}>
       {reverse ? arr.reverse() : arr}
-    </Flex>
+    </div>
   );
 };
 MediaObject.propTypes = {
