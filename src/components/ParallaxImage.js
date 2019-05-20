@@ -1,6 +1,5 @@
 import React from 'react';
 import { arrayOf, shape, number, string } from 'prop-types';
-import { Box, Image } from 'rebass';
 
 export default class ParallaxImage extends React.Component {
   static propTypes = {
@@ -63,7 +62,7 @@ export default class ParallaxImage extends React.Component {
     const { isVisible } = this.state;
     const { layers, transition } = this.props;
     const images = layers.map((l, index, arr) => (
-      <Image
+      <img
         // eslint-disable-next-line react/no-array-index-key
         key={index}
         style={{
@@ -75,12 +74,13 @@ export default class ParallaxImage extends React.Component {
         src={l.image.src}
         srcSet={l.image.srcSet}
         sizes={l.image.sizes}
+        alt={l.image.alt}
       />
     ));
     return (
-      <Box css="position: relative" ref={this.$el} data-visible={isVisible}>
+      <div className="relative" ref={this.$el} data-visible={isVisible}>
         {images}
-      </Box>
+      </div>
     );
   }
 }

@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
-import { Box, Link } from 'rebass';
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
   color: white;
   text-decoration: none;
   &:hover {
@@ -16,9 +15,11 @@ const NavLink = props => <StyledLink as={GatsbyLink} {...props} />;
 
 const Menu = () => {
   return (
-    <Box px={[1, 2]} py={2} bg="black" color="white">
-      <NavLink to="/">Home</NavLink>
-    </Box>
+    <nav className="bg-black text-white">
+      <div className="container mx-auto py-2">
+        <NavLink to="/">Home</NavLink>
+      </div>
+    </nav>
   );
 };
 
