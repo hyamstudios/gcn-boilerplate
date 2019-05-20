@@ -5,7 +5,7 @@ import FooterLink from './FooterLink';
 const PageFooter = props => {
   const { links } = props;
   return (
-    <footer className="py-4 bg-black text-white">
+    <footer className="py-4 bg-gray-700 text-white">
       <div className="container mx-auto flex flex-wrap">
         <div className="mb-4 w-full md:mb-0 md:w-4/12">
           <h1 className="text-2xl">hy.am studios</h1>
