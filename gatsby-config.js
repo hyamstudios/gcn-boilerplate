@@ -6,13 +6,21 @@ module.exports = {
     siteUrl: config.siteUrl,
   },
   plugins: [
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-postcss',
+    {
+      resolve: 'gatsby-plugin-purgecss',
+      options: {
+        printRejected: true, // Print removed selectors and processed file names
+        tailwind: true, // Enable tailwindcss support
+      },
+    },
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
         siteUrl: config.siteUrl,
       },
     },
-    'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-contentful',

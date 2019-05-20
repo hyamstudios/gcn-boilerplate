@@ -58,7 +58,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     });
   }
   /** *
-
+  FIX SOME RANDOM GATSBY STUFF
   ** */
   if (process.env.NODE_ENV === 'development') {
     actions.setWebpackConfig({
