@@ -16,7 +16,7 @@ const PageTemplate = ({ data: { page } }) => {
     <Layout>
       <SEO title={page.title} description={page.body.body} pageUrl={page.slug} />
       <article>
-        <h2>{page.title}</h2>
+        <h2 className="text-2xl mb-6">{page.title}</h2>
         <div>{compiled.tree}</div>
       </article>
     </Layout>
