@@ -14,3 +14,5 @@ h6, .h6 {}
 @tailwind components;
 
 @tailwind utilities;
+
+/* Add utilities to the end of CSS */
