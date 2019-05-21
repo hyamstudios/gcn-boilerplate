@@ -87,7 +87,7 @@ export default () => {
             <Button className="btn-generic" type="reset">
               Reset
             </Button>
-            {status && status.submitError && <div>{status.submitError}</div>}
+            {status && status.submitError && <div className="contactForm-error-message">{status.submitError}</div>}
           </fieldset>
         </Form>
       )}
