@@ -3,16 +3,16 @@ import React from 'react';
 import cn from 'classnames';
 import './Button.css';
 
-const Button = ({ variant, className, ...rest }) => {
-  return <button className={cn('btn', variant, className)} {...rest} />;
+const Button = ({ className, ...rest }) => {
+  return <button className={cn('btn', className)} {...rest} />;
 };
 Button.Variants = {
-  Primary: 'primary',
-  Secondary: 'secondary',
-  Generic: 'generic',
+  Primary: 'btn-primary',
+  Secondary: 'btn-secondary',
+  Generic: 'btn-generic',
 };
 Button.defaultProps = {
-  variant: Button.Variants.Primary,
+  variant: '',
   className: '',
 };
 

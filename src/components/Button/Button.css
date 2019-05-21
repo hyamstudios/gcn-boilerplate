@@ -5,30 +5,30 @@
 .btn:disabled {
   @apply bg-gray-300 text-gray-400 !important;
 }
-.btn.primary {
+.btn-primary {
   @apply bg-blue-600 text-white;
 }
-.btn.primary:hover {
+.btn-primary:hover {
   @apply bg-blue-500;
 }
-.btn.primary:active {
+.btn-primary:active {
   @apply bg-blue-700;
 }
-.btn.secondary {
+.btn-secondary {
   @apply bg-orange-600 text-white;
 }
-.btn.secondary:hover {
+.btn-secondary:hover {
   @apply bg-orange-500;
 }
-.btn.secondary:active {
+.btn-secondary:active {
   @apply bg-orange-700;
 }
-.btn.generic {
+.btn-generic {
   @apply bg-gray-600 text-white;
 }
-.btn.generic:hover {
+.btn-generic:hover {
   @apply bg-gray-500;
 }
-.btn.generic:active {
+.btn-generic:active {
   @apply bg-gray-700;
 }

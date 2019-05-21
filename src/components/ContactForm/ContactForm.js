@@ -81,10 +81,10 @@ export default () => {
               <Field className="contactForm-field" required component="textarea" name="message" />
             </div>
             <ErrorMessage name="message" />
-            <Button type="submit" disabled={!isValid || isSubmitting}>
+            <Button className="btn-primary" type="submit" disabled={!isValid || isSubmitting}>
               Submit
             </Button>{' '}
-            <Button variant={Button.Variants.Generic} type="reset">
+            <Button className="btn-generic" type="reset">
               Reset
             </Button>
             {status && status.submitError && <div>{status.submitError}</div>}
