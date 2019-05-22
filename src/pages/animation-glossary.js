@@ -45,7 +45,7 @@ export default () => (
           <td>post-fixes</td>
           <td>enter/leave</td>
           <TDDescription>
-            The element will enter/leave our field of view. The term comes from theather (one enters/leave the stage)
+            The element will enter/leave our field of view. The term comes from theater (one enters/leave the stage)
           </TDDescription>
         </tr>
         <tr>
