@@ -12,4 +12,10 @@
 
 ## Contribution
 
-we use eslint and [commitlint](https://github.com/conventional-changelog/commitlint).
+We use eslint and [commitlint](https://github.com/conventional-changelog/commitlint).
+
+## E2E testing
+We use Cypress
+
+### Screenshots testing
+We use Cypress plugin: [link](https://github.com/palmerhq/cypress-image-snapshot)
