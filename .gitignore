@@ -7,3 +7,4 @@ public/
 contentful-import-error-log*
 .env
 .contentful.json
+cypress/snapshots
