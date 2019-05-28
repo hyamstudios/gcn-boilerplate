@@ -12,7 +12,7 @@ module.exports = {
 
   /* Social Platform Related */
 
-  userTwitter: '@hyamstudios', // Change for Twitter Cards
+  twitter: '@hyamstudios', // Change for Twitter Cards
   shareImage: '/logos/share.jpg', // Open Graph Default Share Image. 1200x1200 is recommended
   shareImageWidth: 900, // Change to the width of your default share image
   shareImageHeight: 600, // Change to the height of your default share image

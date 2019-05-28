@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import tw from 'tailwind.macro';
 import styled from 'styled-components';
 import Menu from 'components/Menu';
-import PageFooterContainer from 'components/PageFooter';
+import PageFooter from 'components/PageFooter';
 import SEO from 'components/SEO';
 import favicon from 'images/favicon.ico';
 import './Layout.css';
@@ -26,7 +26,7 @@ export default props => {
       <Root>
         <Menu />
         <main className="container mx-auto py-4" {...props} />
-        <PageFooterContainer />
+        <PageFooter />
       </Root>
     </Fragment>
   );
