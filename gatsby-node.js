@@ -4,31 +4,35 @@ const path = require(`path`);
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
-  const loadPages = new Promise(resolve => {
-    graphql(`
-      {
-        pages: allContentfulPage {
-          edges {
-            node {
-              slug
+  const { USE_CMS } = process.env;
+  const createContentfulPages =
+    USE_CMS === 'CONTENTFUL'
+      ? new Promise(resolve => {
+          graphql(`
+            {
+              pages: allContentfulPage {
+                edges {
+                  node {
+                    slug
+                  }
+                }
+              }
             }
-          }
-        }
-      }
-    `).then(result => {
-      result.data.pages.edges.map(({ node }) =>
-        createPage({
-          path: `${node.slug}`,
-          component: path.resolve(`./src/templates/page.js`),
-          context: {
-            slug: node.slug,
-          },
-        }),
-      );
-      resolve();
-    });
-  });
-  return Promise.all([loadPages]);
+          `).then(result => {
+            result.data.pages.edges.map(({ node }) =>
+              createPage({
+                path: `${node.slug}`,
+                component: path.resolve(`./src/templates/page.js`),
+                context: {
+                  slug: node.slug,
+                },
+              }),
+            );
+            resolve();
+          });
+        })
+      : Promise.resolve(true);
+  return Promise.all([createContentfulPages]);
 };
 
 exports.onCreateWebpackConfig = ({ actions }) => {
