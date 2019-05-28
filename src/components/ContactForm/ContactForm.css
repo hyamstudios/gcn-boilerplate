@@ -1,15 +1,21 @@
 .contactForm-group {
-  @apply flex flex-wrap my-2;
+  @apply flex;
+  @apply flex-wrap;
+  @apply my-2;
 }
 
 .contactForm-error-message {
-  @apply text-red-700 text-right;
+  @apply text-red-700;
+  @apply text-right;
 }
 
 .contactForm-label {
-  @apply w-1/4 pr-4;
+  @apply w-1/4;
+  @apply pr-4;
 }
 
 .contactForm-field {
-  @apply block border w-3/4;
+  @apply block;
+  @apply border;
+  @apply w-3/4;
 }
