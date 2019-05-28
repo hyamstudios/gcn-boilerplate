@@ -1,6 +1,6 @@
 # Component: PageFooter
 
-this is just an demostration on how you can organise a component.
+this is just an demonstration on how you can organise a component.
 
 You can create a PageFooterContainer component inside this folder, and use it to connect to data sources. Then, export it as default in `index.js` file. So the logic around this component is fully contained. And the usage will be:
 
