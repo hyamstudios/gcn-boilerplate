@@ -1,12 +1,6 @@
+import React from 'react';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
-import tw from 'tailwind.macro';
 
-const StyledLink = styled(Link)`
-  ${tw`block text-white text-sm`} text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
+const StyledLink = props => <Link {...props} className="block text-white text-sm no-underline hover:underline" />;
 
 export default StyledLink;

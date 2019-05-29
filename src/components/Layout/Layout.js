@@ -1,17 +1,12 @@
 import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
-import tw from 'tailwind.macro';
-import styled from 'styled-components';
+import cn from 'classnames';
 import Menu from 'components/Menu';
 import PageFooter from 'components/PageFooter';
 import SEO from 'components/SEO';
 import favicon from 'images/favicon.ico';
 import './Layout.css';
-
-const Root = styled.div`
-  ${tw`min-h-screen`} display: grid;
-  grid-template-rows: auto 1fr auto;
-`;
+import styles from './Layout.module.css';
 
 export default props => {
   return (
@@ -23,11 +18,11 @@ export default props => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
       </Helmet>
-      <Root>
+      <div className={cn(styles.root, 'min-h-screen')}>
         <Menu />
         <main className="container mx-auto py-4" {...props} />
         <PageFooter />
-      </Root>
+      </div>
     </Fragment>
   );
 };
