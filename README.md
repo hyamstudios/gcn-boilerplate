@@ -12,10 +12,6 @@
 
 ## Frameworks/Libraries used in this project
 
-
-
-(optional) Styled Component - https://www.styled-components.com
-
 ### Gatsby - https://gatsbyjs.org
 
 `Gatsby` makes creating performant website easy. Gatsby can handle image optimization for you so you and your designer friends do not have to worry about client's 8000 x 8000 pixels image anymore.
@@ -38,7 +34,7 @@ PostCSS - https://github.com/postcss/postcss
 
 Importing css files, and `CSS modules` are supported [out of the box thanks to Gatsby](https://www.gatsbyjs.org/docs/css-modules/).
 
-### Styled Components
+### (optional) Styled Component - https://www.styled-components.com
 
 `Styled Components` provides a easy way to write contained CSS, or sometimes it is nice to have your CSS inside your JS code (e.g. complicated visual components. ).
 
