@@ -12,27 +12,33 @@
 
 ## Frameworks/Libraries used in this project
 
-Gatsby - https://gatsbyjs.org
 
-React - https://reactjs.org
-
-GraphQL - https://graphql.org
-
-Tailwind - https://tailwindcss.com
-
-PostCSS - https://github.com/postcss/postcss
 
 (optional) Styled Component - https://www.styled-components.com
+
+### Gatsby - https://gatsbyjs.org
 
 `Gatsby` makes creating performant website easy. Gatsby can handle image optimization for you so you and your designer friends do not have to worry about client's 8000 x 8000 pixels image anymore.
 
 You will use `React` and `GraphQL` with `Gatsby`. For more information check their documentation out!
 
+React - https://reactjs.org
+
+GraphQL - https://graphql.org
+
+### Tailwind - https://tailwindcss.com
+
 We use `Tailwind CSS` to make sure we have consistent design applied across the project. For example, you have limited choices on spacing (margin & padding) and font sizes by using `Tailwind`'s classes (e.g. `m-1 m-2 m-3... text-xs text-sm text-md...`). Ideally designers should give you a list of spacing and text sizes to let you configure `Tailwind`.
 
 `Tailwind CSS` is powered by `PostCSS`, feel free to configure it. However, it should be sufficient to use other options, before extending/reconfiguring `PostCSS`. Please continute reading for alternatives.
 
+PostCSS - https://github.com/postcss/postcss
+
+### Other CSS methods
+
 Importing css files, and `CSS modules` are supported [out of the box thanks to Gatsby](https://www.gatsbyjs.org/docs/css-modules/).
+
+### Styled Components
 
 `Styled Components` provides a easy way to write contained CSS, or sometimes it is nice to have your CSS inside your JS code (e.g. complicated visual components. ).
 
