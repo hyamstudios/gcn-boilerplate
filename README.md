@@ -1,11 +1,38 @@
 # HYAM-GCN-STARTER
 
-## Local Setup
+## Project description
+
+##### Type: Boilerplate for Gatsby site
+##### Client: Hyam
+##### Production URL: https://gcn.netlify.hyamstudios.com/
+##### Staging URL: (depends on your branch or pull request)
+
+## Stack
+
+### Frontend
+
+##### Rendering: [React](https://reactjs.org)
+##### State management: None
+##### Build tools: [Gatsby](https://gatsbyjs.org), [Eslint](https://eslint.org/), [Commitlint](https://github.com/conventional-changelog/commitlint).
+##### CSS: [Tailwind](https://tailwindcss.com), [PostCSS](https://github.com/postcss/postcss), [Styled Components](https://www.styled-components.com)
+##### Testing: Cypress with [Cypress Image Snapshot](https://github.com/palmerhq/cypress-image-snapshot)
+
+### Backend
+##### Language: Javascript, GraphQL
+##### CMS: Contentful if required
+##### Hosting: Netlify
+##### Production Access: 1Password
+
+****
+
+## Installation
+
+### Setup (Local)
 
 1. create `.env` according to `.env-example`
 2. use `yarn`
 
-## Netlify Setup
+### Setup (Netlify)
 
 1. create environment variables in deploy settings according to `.env-example`
 2. create `GOOGLE_ANALYTIC` env var if using google analytic
@@ -52,15 +79,3 @@ Therefore I recommend the following usage:
 4. In some cases where you need to build super interactive complicated components, it can be easier to use CSS-in-JS. You can then use `Styled Components` in these places.
 
 By default Styled Components is not used anywhere in the code in this boilerplate. It is a special power for the special time when you are building your special project! Have fun!
-
-## Code formatting
-
-We use eslint and [commitlint](https://github.com/conventional-changelog/commitlint).
-
-## E2E testing
-
-We use Cypress
-
-### Screenshots testing
-
-We use Cypress plugin: [link](https://github.com/palmerhq/cypress-image-snapshot)
