@@ -30,7 +30,7 @@
     "gatsby-plugin-sitemap": "^2.0.1",
     "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-source-contentful": "^2.0.1",
-    "highlight.js": "^9.13.0",
+    "highlight.js": "^10.4.1",
     "inquirer": "^6.2.0",
     "marksy": "^6.1.0",
     "path": "^0.12.7",
